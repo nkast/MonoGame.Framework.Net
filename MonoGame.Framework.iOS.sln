@@ -1,0 +1,60 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.iOS", "ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj", "{734EAA48-F1CA-481A-B391-0285BC0E8B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.iOS", "MonoGame.Framework.Net\MonoGame.Framework.Net.iOS.csproj", "{D4838656-8545-4DC5-8822-D4AD313E17AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		Ad-Hoc|iPhoneSimulator = Ad-Hoc|iPhoneSimulator
+		AppStore|iPhone = AppStore|iPhone
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Debug|iPhone.Build.0 = Debug|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Release|iPhone.ActiveCfg = Release|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Release|iPhone.Build.0 = Release|iPhone
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{734EAA48-F1CA-481A-B391-0285BC0E8B40}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Debug|iPhone.Build.0 = Debug|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Release|iPhone.ActiveCfg = Release|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Release|iPhone.Build.0 = Release|iPhone
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{D4838656-8545-4DC5-8822-D4AD313E17AC}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8D14986-77C5-49BE-B53F-8368A4C28949}
+	EndGlobalSection
+EndGlobal
