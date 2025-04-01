@@ -2,7 +2,6 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE.txt', which is part of this source code package.
 
-#region Using clause
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +15,6 @@ using Android.Widget;
 using Microsoft.Xna.Framework.Net;
 
 
-#endregion Using clause
 
 namespace Microsoft.Xna.Framework.GamerServices
 {

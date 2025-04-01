@@ -2,12 +2,10 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE.txt', which is part of this source code package.
 
-#region Using Statements
 using System;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
-#endregion Statements
 
 #if !WP8
 namespace Microsoft.Xna.Framework.GamerServices {

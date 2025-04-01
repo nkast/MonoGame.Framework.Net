@@ -2,14 +2,12 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE.txt', which is part of this source code package.
 
-#region Using clause
 using System;
 using System.IO;
 
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
 
-#endregion Using clause
 
 namespace Microsoft.Xna.Framework.Net
 {
