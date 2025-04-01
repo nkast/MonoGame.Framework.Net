@@ -4,7 +4,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Linux", "ThirdParty\Lidgren.Network\Lidgren.Network.Linux.csproj", "{758CB33D-6EBD-41EA-BB0C-55B1C97A325F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Linux", "MonoGame.Framework.Net\MonoGame.Framework.Net.Linux.csproj", "{1B738549-0449-4504-B978-7BFC347E3F3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Linux", "Xna.Framework.Net\MonoGame.Framework.Net.Linux.csproj", "{1B738549-0449-4504-B978-7BFC347E3F3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
