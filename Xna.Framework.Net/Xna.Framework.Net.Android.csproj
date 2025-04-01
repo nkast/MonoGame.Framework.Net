@@ -29,7 +29,7 @@
     <OutputPath>bin\Android\AnyCPU\Debug</OutputPath>
     <IntermediateOutputPath>obj\Android\AnyCPU\Debug</IntermediateOutputPath>
     <DocumentationFile>bin\Android\AnyCPU\Debug\MonoGame.Framework.Net.xml</DocumentationFile>
-    <DefineConstants>DEBUG;TRACE;ANDROID;GLES;OPENGL;NET</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -42,7 +42,7 @@
     <OutputPath>bin\Android\AnyCPU\Release</OutputPath>
     <IntermediateOutputPath>obj\Android\AnyCPU\Release</IntermediateOutputPath>
     <DocumentationFile>bin\Android\AnyCPU\Release\MonoGame.Framework.Net.xml</DocumentationFile>
-    <DefineConstants>TRACE;ANDROID;GLES;OPENGL;NET</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
