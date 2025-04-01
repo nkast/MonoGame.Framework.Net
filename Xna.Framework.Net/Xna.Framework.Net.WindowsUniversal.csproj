@@ -28,7 +28,7 @@
     <OutputPath>bin\WindowsUniversal\AnyCPU\Debug</OutputPath>
     <IntermediateOutputPath>obj\WindowsUniversal\AnyCPU\Debug</IntermediateOutputPath>
     <DocumentationFile>bin\WindowsUniversal\AnyCPU\Debug\MonoGame.Framework.Net.xml</DocumentationFile>
-    <DefineConstants>DEBUG;TRACE;WINDOWS_UAP;DIRECTX</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;WINDOWS_UAP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -39,7 +39,7 @@
     <OutputPath>bin\WindowsUniversal\AnyCPU\Release</OutputPath>
     <IntermediateOutputPath>obj\WindowsUniversal\AnyCPU\Release</IntermediateOutputPath>
     <DocumentationFile>bin\WindowsUniversal\AnyCPU\Release\MonoGame.Framework.Net.xml</DocumentationFile>
-    <DefineConstants>TRACE;WINDOWS_UAP;DIRECTX</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_UAP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>

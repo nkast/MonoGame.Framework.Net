@@ -16,9 +16,10 @@ using Windows.System;
 using Microsoft.Xna.Framework.Input;
 #else
 using System.Runtime.Remoting.Messaging;
-#if !(WINDOWS && DIRECTX)
-using Microsoft.Xna.Framework.Net;
 #endif
+
+#if !WINDOWS_UAP && !WINDOWS
+using Microsoft.Xna.Framework.Net;
 #endif
 
 
@@ -261,7 +262,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                 return;
             }
 
-#if !WINDOWS_UAP && !(WINDOWS && DIRECTX)
+#if !WINDOWS_UAP && !WINDOWS
             Microsoft.Xna.Framework.GamerServices.MonoGameGamerServicesHelper.ShowSigninSheet();            
 
             if (GamerServicesComponent.LocalNetworkGamer == null)
@@ -403,7 +404,7 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         internal static void Initialise(Game game)
         {
-#if !DIRECTX
+#if !WINDOWS_UAP && !WINDOWS
             MonoGameGamerServicesHelper.Initialise(game);
 #endif
         }
