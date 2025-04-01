@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.iOS", "ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj", "{734EAA48-F1CA-481A-B391-0285BC0E8B40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.iOS", "Xna.Framework.Net\MonoGame.Framework.Net.iOS.csproj", "{D4838656-8545-4DC5-8822-D4AD313E17AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna.Framework.Net.iOS", "Xna.Framework.Net\Xna.Framework.Net.iOS.csproj", "{D4838656-8545-4DC5-8822-D4AD313E17AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
