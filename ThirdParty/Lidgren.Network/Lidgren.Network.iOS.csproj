@@ -1,105 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net8.0-ios</TargetFramework>
     <ProjectGuid>{734EAA48-F1CA-481A-B391-0285BC0E8B40}</ProjectGuid>
-    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
     <RootNamespace>Lidgren.Network</RootNamespace>
     <AssemblyName>Lidgren.Network</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <NoWarn></NoWarn>
-    <TargetFrameworkProfile />
-    <LangVersion>Default</LangVersion>
-    <SynchReleaseVersion>False</SynchReleaseVersion>
+    <OutputPath>bin\iOS\$(Platform)\$(Configuration)</OutputPath>
+    <IntermediateOutputPath>obj\iOS\$(Platform)\$(Configuration)</IntermediateOutputPath>
+    <DocumentationFile>bin\iOS\$(Platform)\$(Configuration)\Lidgren.Network.xml</DocumentationFile>
+    <DefineConstants>$(DefineConstants);IOS;UNITY_4_5</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
-    <DebugSymbols>true</DebugSymbols>
-    <Optimize>false</Optimize>
-    <DebugType>full</DebugType>
-    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <OutputPath>bin\iOS\iPhone\Debug</OutputPath>
-    <IntermediateOutputPath>obj\iOS\iPhone\Debug</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\iPhone\Debug\Lidgren.Network.xml</DocumentationFile>
-    <DefineConstants>DEBUG;IOS;UNITY_4_5</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <MtouchDebug>True</MtouchDebug>
-    <MtouchUseArmv7>false</MtouchUseArmv7>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-    <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
-    <OutputPath>bin\iOS\iPhone\Release</OutputPath>
-    <IntermediateOutputPath>obj\iOS\iPhone\Release</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\iPhone\Release\Lidgren.Network.xml</DocumentationFile>
-    <DefineConstants>IOS;UNITY_4_5</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <MtouchUseArmv7>false</MtouchUseArmv7>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <DebugSymbols>true</DebugSymbols>
-    <Optimize>false</Optimize>
-    <DebugType>full</DebugType>
-    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <OutputPath>bin\iOS\iPhoneSimulator\Debug</OutputPath>
-    <IntermediateOutputPath>obj\iOS\iPhoneSimulator\Debug</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\iPhoneSimulator\Debug\Lidgren.Network.xml</DocumentationFile>
-    <DefineConstants>DEBUG;IOS;UNITY_4_5</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <MtouchDebug>True</MtouchDebug>
-    <MtouchUseArmv7>false</MtouchUseArmv7>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
-    <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
-    <OutputPath>bin\iOS\iPhoneSimulator\Release</OutputPath>
-    <IntermediateOutputPath>obj\iOS\iPhoneSimulator\Release</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\iPhoneSimulator\Release\Lidgren.Network.xml</DocumentationFile>
-    <DefineConstants>IOS;UNITY_4_5</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <MtouchUseArmv7>false</MtouchUseArmv7>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
-    <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
-    <OutputPath>bin\iOS\iPhone\Ad-Hoc</OutputPath>
-    <IntermediateOutputPath>obj\iOS\iPhone\Ad-Hoc</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\iPhone\Ad-Hoc\Lidgren.Network.xml</DocumentationFile>
-    <DefineConstants>IOS;UNITY_4_5</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <MtouchUseArmv7>false</MtouchUseArmv7>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
-    <Optimize>true</Optimize>
-    <DebugType>none</DebugType>
-    <OutputPath>bin\iOS\iPhone\AppStore</OutputPath>
-    <IntermediateOutputPath>obj\iOS\iPhone\AppStore</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\iPhone\AppStore\Lidgren.Network.xml</DocumentationFile>
-    <DefineConstants>IOS;UNITY_4_5</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>0</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <MtouchUseArmv7>false</MtouchUseArmv7>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Xamarin.iOS" />
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="Encryption\NetAESEncryption.cs" />
     <Compile Include="Encryption\NetCryptoProviderBase.cs" />
@@ -170,48 +85,5 @@
     <Compile Include="NetUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <PropertyGroup>
-    <_PostBuildHookTimestamp>@(IntermediateAssembly-&gt;'%(FullPath).timestamp')</_PostBuildHookTimestamp>
-    <_PostBuildHookHostPlatform>AnyCPU</_PostBuildHookHostPlatform>
-  </PropertyGroup>
-  <UsingTask TaskName="LocalTouch" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll">
-    <ParameterGroup>
-      <Path ParameterType="System.String" Required="true" />
-    </ParameterGroup>
-    <Task>
-      <Using Namespace="System" />
-      <Using Namespace="System.IO" />
-      <Code Type="Fragment" Language="cs">
-              
-                  if (!File.Exists(Path))
-                  {
-                    var stream = File.Create(Path);
-                    stream.Dispose();
-                  }
-                  File.SetLastAccessTime(Path, DateTime.Now);
-                  
-            </Code>
-    </Task>
-  </UsingTask>
-  <Target Name="PostBuildHooks" Inputs="@(IntermediateAssembly);@(ReferencePath)" Outputs="@(IntermediateAssembly);$(_PostBuildHookTimestamp)" AfterTargets="CoreCompile" BeforeTargets="AfterCompile">
-    <LocalTouch Path="$(_PostBuildHookTimestamp)" />
-  </Target>
+
 </Project>
