@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Linux", "ThirdParty\Lidgren.Network\Lidgren.Network.Linux.csproj", "{758CB33D-6EBD-41EA-BB0C-55B1C97A325F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network", "ThirdParty\Lidgren.Network\Lidgren.Network.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna.Framework.Net.Linux", "Xna.Framework.Net\Xna.Framework.Net.Linux.csproj", "{1B738549-0449-4504-B978-7BFC347E3F3C}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{758CB33D-6EBD-41EA-BB0C-55B1C97A325F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{758CB33D-6EBD-41EA-BB0C-55B1C97A325F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{758CB33D-6EBD-41EA-BB0C-55B1C97A325F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{758CB33D-6EBD-41EA-BB0C-55B1C97A325F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B738549-0449-4504-B978-7BFC347E3F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B738549-0449-4504-B978-7BFC347E3F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B738549-0449-4504-B978-7BFC347E3F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
