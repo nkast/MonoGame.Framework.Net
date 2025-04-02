@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <FileAlignment>512</FileAlignment>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9CE2FA93-3D41-4025-B228-3D9D81F19BE0}</ProjectGuid>
@@ -14,9 +12,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1591,0436</NoWarn>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
-    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>15</MinimumVisualStudioVersion>
     <LangVersion>Default</LangVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
@@ -77,31 +75,10 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <ItemGroup />
-  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
-    <VisualStudioVersion>14.0</VisualStudioVersion>
-  </PropertyGroup>
+  <ItemGroup>  
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <PropertyGroup>
-    <_PostBuildHookTimestamp>@(IntermediateAssembly->'%(FullPath).timestamp')</_PostBuildHookTimestamp>
-    <_PostBuildHookHostPlatform>$(Platform)</_PostBuildHookHostPlatform>
-  </PropertyGroup>
-  <Target Name="PostBuildHooks" Inputs="@(IntermediateAssembly);@(ReferencePath)" Outputs="@(IntermediateAssembly);$(_PostBuildHookTimestamp)" AfterTargets="CoreCompile" BeforeTargets="AfterCompile">
-    <Touch Files="$(_PostBuildHookTimestamp)" AlwaysCreate="True" />
-  </Target>
 </Project>
