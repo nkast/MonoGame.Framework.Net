@@ -40,17 +40,7 @@ namespace Microsoft.Xna.Framework.Net
 
         static MonoGamerPeer()
         {
-            // This code looks up the Guid for the host app , this is used to identify the
-            // application on the network . We use the Guid as that is unique to that application.			
-            var assembly = System.Reflection.Assembly.GetAssembly(Game.Instance.GetType());
-            if (assembly != null)
-            {
-                object[] objects = assembly.GetCustomAttributes(typeof(System.Runtime.InteropServices.GuidAttribute), false);
-                if (objects.Length > 0)
-                {
-                    applicationIdentifier = ((System.Runtime.InteropServices.GuidAttribute)objects[0]).Value;
-                }
-            }
+            applicationIdentifier = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
         }
 
         public MonoGamerPeer(NetworkSession session, AvailableNetworkSession availableSession)
