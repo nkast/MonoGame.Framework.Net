@@ -43,14 +43,17 @@ namespace Microsoft.Xna.Framework.GamerServices
 
             IsVisible = true;
 
-            Game.Activity.RunOnUiThread(() =>
+            //TODO: get Activity
+            Activity activity = null; // Game.Activity;
+
+            activity.RunOnUiThread(() =>
             {
-                var alert = new AlertDialog.Builder(Game.Activity);
+                var alert = new AlertDialog.Builder(activity);
 
                 alert.SetTitle(title);
                 alert.SetMessage(description);
 
-                var input = new EditText(Game.Activity) { Text = defaultText };
+                var input = new EditText(activity) { Text = defaultText };
                 if (defaultText != null)
                 {
                     input.SetSelection(defaultText.Length);
@@ -145,9 +148,12 @@ namespace Microsoft.Xna.Framework.GamerServices
             IsVisible = true;
             EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
 
-            Game.Activity.RunOnUiThread(() =>
+            //TODO: get Activity
+            Activity activity = null; // Game.Activity;
+
+            activity.RunOnUiThread(() =>
             {
-                AlertDialog.Builder alert = new AlertDialog.Builder(Game.Activity);
+                AlertDialog.Builder alert = new AlertDialog.Builder(activity);
 
                 alert.SetTitle(title);
                 alert.SetMessage(text);
@@ -221,20 +227,23 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         public static void ShowMarketplace(PlayerIndex player)
         {
-            string packageName = Game.Activity.PackageName;
+            //TODO: get Activity
+            Activity activity = null; // Game.Activity;
+
+            string packageName = activity.PackageName;
             try
             {
                 Intent intent = new Intent(Intent.ActionView);
                 intent.SetData(Android.Net.Uri.Parse("market://details?id=" + packageName));
                 intent.SetFlags(ActivityFlags.NewTask);
-                Game.Activity.StartActivity(intent);
+                activity.StartActivity(intent);
             }
             catch (ActivityNotFoundException)
             {
                 Intent intent = new Intent(Intent.ActionView);
                 intent.SetData(Android.Net.Uri.Parse("http://play.google.com/store/apps/details?id=" + packageName));
                 intent.SetFlags(ActivityFlags.NewTask);
-                Game.Activity.StartActivity(intent);
+                activity.StartActivity(intent);
             }
         }
 
@@ -346,7 +355,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         [CLSCompliant(false)]
-        public static AndroidGameWindow Window
+        public static GameWindow Window
         {
             get;
             set;
