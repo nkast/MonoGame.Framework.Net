@@ -69,7 +69,6 @@
     <Compile Include="GamerServices\PropertyDictionary.cs" />
     <Compile Include="GamerServices\SignedInGamerCollection.cs" />
     <Compile Include="Net\Utilities\DebugHelpers.cs" />
-    <Compile Include="Net\Utilities\EventHelpers.cs" />
     <Compile Include="Platform\WindowsUniversal\GamerServices\SignedInGamer.cs" />
     <Compile Include="Platform\Windows\GamerServices\Guide.cs" />
   </ItemGroup>

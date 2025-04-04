@@ -76,7 +76,6 @@
     <Compile Include="GamerServices\GamerServicesDispatcher.cs" />
     <Compile Include="GamerServices\GamerServicesComponent.cs" />
     <Compile Include="Net\Utilities\DebugHelpers.cs" />
-    <Compile Include="Net\Utilities\EventHelpers.cs" />
     <Compile Include="Net\AvailableNetworkSessionCollection.cs" />
     <Compile Include="Net\AvailableNetworkSession.cs" />
     <Compile Include="Net\CommandEvent.cs" />

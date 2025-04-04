@@ -841,16 +841,22 @@ namespace Microsoft.Xna.Framework.Net
             switch (command.NewState)
             {
                 case NetworkSessionState.Ended:
+                    {
+                        ResetReady();
 
-                    ResetReady();
-
-                    // Have to find an example of how this is used so that I can figure out how to pass
-                    // the EndReason
-                    EventHelpers.Raise(this, SessionEnded, new NetworkSessionEndedEventArgs(NetworkSessionEndReason.HostEndedSession));
+                        // Have to find an example of how this is used so that I can figure out how to pass
+                        // the EndReason
+                        var handler = SessionEnded;
+                        if (handler != null)
+                            handler(this, new NetworkSessionEndedEventArgs(NetworkSessionEndReason.HostEndedSession));
+                    }
                     break;
                 case NetworkSessionState.Playing:
-
-                    EventHelpers.Raise(this, GameStarted, new GameStartedEventArgs());
+                    {
+                        var handler = GameStarted;
+                        if (handler != null)
+                            handler(this, new GameStartedEventArgs());
+                    }
                     break;
             }
 
@@ -858,7 +864,9 @@ namespace Microsoft.Xna.Framework.Net
             if (command.NewState == NetworkSessionState.Lobby && command.OldState == NetworkSessionState.Playing)
             {
                 ResetReady();
-                EventHelpers.Raise(this, GameEnded, new GameEndedEventArgs());
+                var handler = GameEnded;
+                if (handler != null)
+                    handler(this, new GameEndedEventArgs());
             }
         }
 
@@ -898,7 +906,9 @@ namespace Microsoft.Xna.Framework.Net
             gamer.Machine.Gamers.AddGamer(gamer);
             //gamer.IsReady = true;
 
-            EventHelpers.Raise(this, GamerJoined, new GamerJoinedEventArgs(gamer));
+            var handler = GamerJoined;
+            if (handler != null)
+                handler(this, new GamerJoinedEventArgs(gamer));
 
             if (networkPeer != null && (command.State & GamerStates.Local) == 0)
             {
@@ -925,7 +935,9 @@ namespace Microsoft.Xna.Framework.Net
                     gamer = _remoteGamers[x];
                     _remoteGamers.RemoveGamer(gamer);
                     _allGamers.RemoveGamer(gamer);
-                    EventHelpers.Raise(this, GamerLeft, new GamerLeftEventArgs(gamer));
+                    var handler = GamerLeft;
+                    if (handler != null)
+                        handler(this, new GamerLeftEventArgs(gamer));
                 }
 
             }

@@ -266,12 +266,16 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         protected virtual void OnSignedIn(SignedInEventArgs e)
         {
-            EventHelpers.Raise(this, SignedIn, e);
+            var handler = SignedIn;
+            if (handler != null)
+                handler(this, e);
         }
 
         protected virtual void OnSignedOut(SignedOutEventArgs e)
         {
-            EventHelpers.Raise(this, SignedOut, e);
+            var handler = SignedOut;
+            if (handler != null)
+                handler(this, e);
         }
 
         #region Events
