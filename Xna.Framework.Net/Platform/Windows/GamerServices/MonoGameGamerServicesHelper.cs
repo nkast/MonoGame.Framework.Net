@@ -11,7 +11,7 @@ namespace Microsoft.Xna.Framework.GamerServices
     {
         private static MonoLiveGuide guide = null;
 
-        
+
 
         public static void ShowSigninSheet()
         {
@@ -19,15 +19,16 @@ namespace Microsoft.Xna.Framework.GamerServices
             guide.Visible = true;
             Guide.IsVisible = true;
         }
-    
+
         internal static void Initialise(Game game)
         {
             if (guide == null)
             {
-                guide = new MonoLiveGuide(game);                
+                guide = new MonoLiveGuide(game);
                 game.Components.Add(guide);
             }
-        }}
+        }
+    }
 
     internal class MonoLiveGuide : DrawableGameComponent
     {
@@ -150,6 +151,5 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
             base.Update(gameTime);
         }
-
     }
 }

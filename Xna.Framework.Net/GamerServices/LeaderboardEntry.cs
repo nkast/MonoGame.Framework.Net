@@ -20,7 +20,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         [DataMember]
         public Gamer Gamer { get; internal set; }
 
-        public LeaderboardEntry ()
+        public LeaderboardEntry()
         {
         }
     }

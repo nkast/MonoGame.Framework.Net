@@ -16,26 +16,26 @@ namespace Microsoft.Xna.Framework.Net
     public sealed class NetworkMachine
     {
         private GamerCollection<NetworkGamer> gamers;
-        
+
         #region Constructors
-        public NetworkMachine ()
+        public NetworkMachine()
         {
             gamers = new GamerCollection<NetworkGamer>();
         }
         #endregion
-        
+
         #region Methods
 
-        public void RemoveFromSession ()
+        public void RemoveFromSession()
         {
             throw new NotImplementedException();
         }
 
         #endregion
-        
+
         #region Methods
-        public GamerCollection<NetworkGamer> Gamers 
-        { 
+        public GamerCollection<NetworkGamer> Gamers
+        {
             get
             {
                 return gamers;

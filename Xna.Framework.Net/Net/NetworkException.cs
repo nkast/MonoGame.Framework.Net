@@ -16,18 +16,18 @@ namespace Microsoft.Xna.Framework.Net
     public class NetworkException : Exception
     {
 
-        public NetworkException ()
+        public NetworkException()
         {
         }
-        
-        public NetworkException( string message )
+
+        public NetworkException(string message)
         {
-            
+
         }
-        
-        public NetworkException (string message, Exception innerException)
+
+        public NetworkException(string message, Exception innerException)
         {
-            
+
         }
     }
 }

@@ -9,15 +9,17 @@ using System.Drawing;
 using Foundation;
 using UIKit;
 
-namespace Microsoft.Xna.Framework {
-    class KeyboardInputViewController : UIViewController {
+namespace Microsoft.Xna.Framework
+{
+    class KeyboardInputViewController : UIViewController
+    {
         private readonly string _titleText;
         private readonly string _descriptionText;
         private readonly string _defaultText;
         private readonly bool _usePasswordMode;
         private UIViewController _gameViewController;
 
-        public KeyboardInputViewController (
+        public KeyboardInputViewController(
             string titleText, string descriptionText, string defaultText, bool usePasswordMode, UIViewController gameViewController)
         {
             _titleText = titleText;
@@ -27,45 +29,46 @@ namespace Microsoft.Xna.Framework {
             _gameViewController = gameViewController;
         }
 
-        private readonly List<NSObject> _keyboardObservers = new List<NSObject> ();
-        public override void LoadView ()
+        private readonly List<NSObject> _keyboardObservers = new List<NSObject>();
+        public override void LoadView()
         {
-            var view = new KeyboardInputView (new RectangleF (0, 0, 240, 320));
+            var view = new KeyboardInputView(new RectangleF(0, 0, 240, 320));
             view.Title = _titleText;
             view.Description = _descriptionText;
             view.Text = _defaultText;
             view.UsePasswordMode = _usePasswordMode;
 
-            view.ActivateFirstField ();
+            view.ActivateFirstField();
 
             base.View = view;
 
-            _keyboardObservers.Add (
+            _keyboardObservers.Add(
                 NSNotificationCenter.DefaultCenter.AddObserver(
                     UIKeyboard.DidShowNotification, Keyboard_DidShow));
-            _keyboardObservers.Add (
+            _keyboardObservers.Add(
                 NSNotificationCenter.DefaultCenter.AddObserver(
                     UIKeyboard.WillHideNotification, Keyboard_WillHide));
         }
 
-        public new KeyboardInputView View {
-            get { return (KeyboardInputView) base.View; }
+        public new KeyboardInputView View
+        {
+            get { return (KeyboardInputView)base.View; }
         }
 
         [Obsolete]
-        public override void ViewDidUnload ()
+        public override void ViewDidUnload()
         {
-            base.ViewDidUnload ();
+            base.ViewDidUnload();
 
-            NSNotificationCenter.DefaultCenter.RemoveObservers (_keyboardObservers);
-            _keyboardObservers.Clear ();
+            NSNotificationCenter.DefaultCenter.RemoveObservers(_keyboardObservers);
+            _keyboardObservers.Clear();
 
             _gameViewController = null;
         }
 
         private void Keyboard_DidShow(NSNotification notification)
         {
-            var keyboardSize = UIKeyboard.FrameBeginFromNotification (notification).Size;
+            var keyboardSize = UIKeyboard.FrameBeginFromNotification(notification).Size;
 
             if (InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft ||
                 InterfaceOrientation == UIInterfaceOrientation.LandscapeRight)
@@ -80,7 +83,7 @@ namespace Microsoft.Xna.Framework {
             view.ContentInset = contentInsets;
             view.ScrollIndicatorInsets = contentInsets;
 
-            view.ScrollActiveFieldToVisible ();
+            view.ScrollActiveFieldToVisible();
         }
 
         private void Keyboard_WillHide(NSNotification notification)
@@ -102,17 +105,17 @@ namespace Microsoft.Xna.Framework {
         #endregion
 
         #region Autorotation for iOS 6 or newer
-        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations ()
+        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()
         {
             return OrientationConverter.ToUIInterfaceOrientationMask((_gameViewController as iOSGameViewController).SupportedOrientations);
         }
-        
-        public override bool ShouldAutorotate ()
+
+        public override bool ShouldAutorotate()
         {
             return true;
         }
-        
-        public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation ()
+
+        public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation()
         {
             return _gameViewController.PreferredInterfaceOrientationForPresentation();
         }
@@ -121,30 +124,33 @@ namespace Microsoft.Xna.Framework {
         public override void WillRotate(UIInterfaceOrientation toInterfaceOrientation, double duration)
         {
             base.WillRotate(toInterfaceOrientation, duration);
-            View.LayoutSubviews ();
+            View.LayoutSubviews();
         }
     }
 
-    struct PaddingF {
+    struct PaddingF
+    {
         public float Left;
         public float Top;
         public float Right;
         public float Bottom;
 
-        public float Horizontal {
+        public float Horizontal
+        {
             get { return Left + Right; }
         }
 
-        public float Vertical {
+        public float Vertical
+        {
             get { return Top + Bottom; }
         }
 
-        public PaddingF (float all)
+        public PaddingF(float all)
         {
             Left = Top = Right = Bottom = all;
         }
 
-        public PaddingF (float left, float top, float right, float bottom)
+        public PaddingF(float left, float top, float right, float bottom)
         {
             Left = left;
             Top = top;

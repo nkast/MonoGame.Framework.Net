@@ -15,7 +15,6 @@ using Android.Widget;
 using Microsoft.Xna.Framework.Net;
 
 
-
 namespace Microsoft.Xna.Framework.GamerServices
 {
     public static class Guide
@@ -25,31 +24,26 @@ namespace Microsoft.Xna.Framework.GamerServices
         private static bool isVisible;
         private static bool simulateTrialMode;
 
-        internal static void Initialise(Game game)
-        {
-            MonoGameGamerServicesHelper.Initialise(game);        
-        }
-
         delegate string ShowKeyboardInputDelegate(
-          PlayerIndex player,           
-         string title,
-         string description,
-         string defaultText,
-          bool usePasswordMode);
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            bool usePasswordMode);
 
-         public static string ShowKeyboardInput(
-          PlayerIndex player,           
-          string title,
-          string description,
-          string defaultText,
-          bool usePasswordMode)
-         {
+        public static string ShowKeyboardInput(
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            bool usePasswordMode)
+        {
             string result = null;
             EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
 
             IsVisible = true;
 
-            Game.Activity.RunOnUiThread(() => 
+            Game.Activity.RunOnUiThread(() =>
             {
                 var alert = new AlertDialog.Builder(Game.Activity);
 
@@ -90,143 +84,142 @@ namespace Microsoft.Xna.Framework.GamerServices
             return result;
         }
 
-        public static IAsyncResult BeginShowKeyboardInput (
-         PlayerIndex player,
-         string title,
-         string description,
-         string defaultText,
-         AsyncCallback callback,
-         Object state)
+        public static IAsyncResult BeginShowKeyboardInput(
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state)
         {
-            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false );
+            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false);
         }
 
-        public static IAsyncResult BeginShowKeyboardInput (
-         PlayerIndex player,
-         string title,
-         string description,
-         string defaultText,
-         AsyncCallback callback,
-         Object state,
-         bool usePasswordMode)
+        public static IAsyncResult BeginShowKeyboardInput(
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state,
+            bool usePasswordMode)
         {
             if (IsVisible)
                 throw new GuideAlreadyVisibleException("The function cannot be completed at this time: the Guide UI is already active. Wait until Guide.IsVisible is false before issuing this call.");
 
             IsVisible = true;
 
-            ShowKeyboardInputDelegate ski = ShowKeyboardInput; 
+            ShowKeyboardInputDelegate ski = ShowKeyboardInput;
 
             return ski.BeginInvoke(player, title, description, defaultText, usePasswordMode, callback, ski);
         }
 
-        public static string EndShowKeyboardInput (IAsyncResult result)
+        public static string EndShowKeyboardInput(IAsyncResult result)
         {
-            try 
+            try
             {
                 return (result.AsyncState as ShowKeyboardInputDelegate).EndInvoke(result);
-            } 
-            finally 
+            }
+            finally
             {
                 IsVisible = false;
-            }			
+            }
         }
 
-        delegate Nullable<int> ShowMessageBoxDelegate( string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon);
+        delegate Nullable<int> ShowMessageBoxDelegate(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon);
 
-        public static Nullable<int> ShowMessageBox( string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon)
+        public static Nullable<int> ShowMessageBox(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon)
         {
             Nullable<int> result = null;
 
             IsVisible = true;
             EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
 
-            Game.Activity.RunOnUiThread(() => {
+            Game.Activity.RunOnUiThread(() =>
+            {
                 AlertDialog.Builder alert = new AlertDialog.Builder(Game.Activity);
 
                 alert.SetTitle(title);
                 alert.SetMessage(text);
 
                 alert.SetPositiveButton(buttons.ElementAt(0), (dialog, whichButton) =>
-                { 
+                {
                     result = 0;
                     IsVisible = false;
                     waitHandle.Set();
                 });
 
                 if (buttons.Count() == 2)
-                    alert.SetNegativeButton(buttons.ElementAt(1), (dialog, whichButton) => 
-                    { 
+                    alert.SetNegativeButton(buttons.ElementAt(1), (dialog, whichButton) =>
+                    {
                         result = 1;
                         IsVisible = false;
                         waitHandle.Set();
                     });
                 alert.SetCancelable(false);
-                
+
                 alert.Show();
             });
             waitHandle.WaitOne();
             IsVisible = false;
-    
             return result;
         }
 
         public static IAsyncResult BeginShowMessageBox(
-         PlayerIndex player,
-         string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon,
-         AsyncCallback callback,
-         Object state
-        )
+            PlayerIndex player,
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
             if (IsVisible)
                 throw new GuideAlreadyVisibleException("The function cannot be completed at this time: the Guide UI is already active. Wait until Guide.IsVisible is false before issuing this call.");
-            
-            IsVisible = true;
-            
-            ShowMessageBoxDelegate smb = ShowMessageBox; 
 
-            return smb.BeginInvoke(title, text, buttons, focusButton, icon, callback, smb);			
+            IsVisible = true;
+
+            ShowMessageBoxDelegate smb = ShowMessageBox;
+
+            return smb.BeginInvoke(title, text, buttons, focusButton, icon, callback, smb);
         }
 
-        public static IAsyncResult BeginShowMessageBox (
-         string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon,
-         AsyncCallback callback,
-         Object state
-        )
+        public static IAsyncResult BeginShowMessageBox(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
             return BeginShowMessageBox(PlayerIndex.One, title, text, buttons, focusButton, icon, callback, state);
         }
 
-        public static Nullable<int> EndShowMessageBox (IAsyncResult result)
+        public static Nullable<int> EndShowMessageBox(IAsyncResult result)
         {
             try
             {
                 return (result.AsyncState as ShowMessageBoxDelegate).EndInvoke(result);
-            } 
-            finally 
+            }
+            finally
             {
                 IsVisible = false;
             }
         }
 
-
-        public static void ShowMarketplace (PlayerIndex player )
+        public static void ShowMarketplace(PlayerIndex player)
         {
             string packageName = Game.Activity.PackageName;
             try
@@ -245,19 +238,19 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static void Show ()
+        public static void Show()
         {
             ShowSignIn(1, false);
         }
 
-        public static void ShowSignIn (int paneCount, bool onlineOnly)
+        public static void ShowSignIn(int paneCount, bool onlineOnly)
         {
-            if ( paneCount != 1 )
+            if (paneCount != 1)
             {
                 new ArgumentException("paneCount Can only be 1 on iPhone");
                 return;
             }
-            
+
             MonoGameGamerServicesHelper.ShowSigninSheet();
 
             if (GamerServicesComponent.LocalNetworkGamer == null)
@@ -272,40 +265,40 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         public static void ShowLeaderboard()
         {
-            if ( ( Gamer.SignedInGamers.Count > 0 ) && ( Gamer.SignedInGamers[0].IsSignedInToLive ) )
+            if ((Gamer.SignedInGamers.Count > 0) && (Gamer.SignedInGamers[0].IsSignedInToLive))
             {
-                
+
             }
         }
 
         public static void ShowAchievements()
         {
-            if ( ( Gamer.SignedInGamers.Count > 0 ) && ( Gamer.SignedInGamers[0].IsSignedInToLive ) )
+            if ((Gamer.SignedInGamers.Count > 0) && (Gamer.SignedInGamers[0].IsSignedInToLive))
             {
-                
+
             }
         }
-        
+
         public static void ShowPeerPicker()
         {
-            if ( ( Gamer.SignedInGamers.Count > 0 ) && ( Gamer.SignedInGamers[0].IsSignedInToLive ) )
+            if ((Gamer.SignedInGamers.Count > 0) && (Gamer.SignedInGamers[0].IsSignedInToLive))
             {
-                
+
             }
         }
-        
-        
+
+
         public static void ShowMatchMaker()
         {
-            if ( ( Gamer.SignedInGamers.Count > 0 ) && ( Gamer.SignedInGamers[0].IsSignedInToLive ) )
+            if ((Gamer.SignedInGamers.Count > 0) && (Gamer.SignedInGamers[0].IsSignedInToLive))
             {
-            
+
             }
         }
 
         #region Properties
-        public static bool IsScreenSaverEnabled 
-        { 
+        public static bool IsScreenSaverEnabled
+        {
             get
             {
                 return isScreenSaverEnabled;
@@ -316,8 +309,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool IsTrialMode 
-        { 
+        public static bool IsTrialMode
+        {
             get
             {
                 return isTrialMode;
@@ -328,8 +321,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool IsVisible 
-        { 
+        public static bool IsVisible
+        {
             get
             {
                 return isVisible;
@@ -340,8 +333,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool SimulateTrialMode 
-        { 
+        public static bool SimulateTrialMode
+        {
             get
             {
                 return simulateTrialMode;
@@ -353,12 +346,16 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         [CLSCompliant(false)]
-        public static AndroidGameWindow Window 
-        { 
+        public static AndroidGameWindow Window
+        {
             get;
             set;
         }
         #endregion
-        
+
+        internal static void Initialise(Game game)
+        {
+            MonoGameGamerServicesHelper.Initialise(game);
+        }
     }
 }

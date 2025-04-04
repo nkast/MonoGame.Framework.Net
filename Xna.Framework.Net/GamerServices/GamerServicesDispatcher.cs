@@ -8,16 +8,16 @@ namespace Microsoft.Xna.Framework.GamerServices
 {
     public static class GamerServicesDispatcher
     {
-        public static void Initialize ( IServiceProvider serviceProvider )
+        public static void Initialize(IServiceProvider serviceProvider)
         {
-            throw new NotImplementedException();   
+            throw new NotImplementedException();
         }
 
-        public static void Update ()
-        {            
+        public static void Update()
+        {
         }
 
-        public static bool IsInitialized { get { return false;  } }
+        public static bool IsInitialized { get { return false; } }
 
         public static IntPtr WindowHandle { get; set; }
 

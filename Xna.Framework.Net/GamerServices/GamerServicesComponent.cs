@@ -8,12 +8,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
 
 #if !WP8
-namespace Microsoft.Xna.Framework.GamerServices {
+namespace Microsoft.Xna.Framework.GamerServices
 #else
-namespace MonoGame.Xna.Framework.GamerServices {
+namespace MonoGame.Xna.Framework.GamerServices
 #endif
-
-    public class GamerServicesComponent : GameComponent {
+{
+    public class GamerServicesComponent : GameComponent
+    {
         private static LocalNetworkGamer lng;
 
         internal static LocalNetworkGamer LocalNetworkGamer { get { return lng; } set { lng = value; } }
@@ -33,10 +34,10 @@ namespace MonoGame.Xna.Framework.GamerServices {
             }
 #endif
             Guide.Initialise(game);
-            
+
         }
 
-        public override void Update (GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
 
         }
@@ -44,7 +45,7 @@ namespace MonoGame.Xna.Framework.GamerServices {
 
     public class MonoGameGamerServicesComponent : GamerServicesComponent
     {
-        public MonoGameGamerServicesComponent(Game game): base (game)
+        public MonoGameGamerServicesComponent(Game game) : base(game)
         {
 
         }

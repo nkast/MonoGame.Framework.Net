@@ -15,8 +15,8 @@ namespace Microsoft.Xna.Framework.Net
         internal int count;
         internal NetworkGamer gamer;
         internal LocalNetworkGamer sender;
-        
-        public CommandSendData (byte[] data, int offset, int count, SendDataOptions options, NetworkGamer gamer, LocalNetworkGamer sender)
+
+        public CommandSendData(byte[] data, int offset, int count, SendDataOptions options, NetworkGamer gamer, LocalNetworkGamer sender)
         {
             if (gamer != null)
                 gamerInternalIndex = gamer.Id;
@@ -27,10 +27,11 @@ namespace Microsoft.Xna.Framework.Net
             this.options = options;
             this.gamer = gamer;
             this.sender = sender;
-                
+
         }
-        
-        public CommandEventType Command {
+
+        public CommandEventType Command
+        {
             get { return CommandEventType.SendData; }
         }
     }

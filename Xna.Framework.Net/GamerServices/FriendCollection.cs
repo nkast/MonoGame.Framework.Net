@@ -11,12 +11,12 @@ namespace Microsoft.Xna.Framework.GamerServices
     public class FriendCollection : IList<FriendGamer>, ICollection<FriendGamer>, IEnumerable<FriendGamer>, IEnumerable, IDisposable
     {
         private List<FriendGamer> innerlist;
-        
-        public FriendCollection ()
+
+        public FriendCollection()
         {
             innerlist = new List<FriendGamer>();
         }
-        
+
         ~FriendCollection()
         {
             Dispose(false);
@@ -27,7 +27,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             get { return innerlist.Count; }
         }
-        
+
         public FriendGamer this[int index]
         {
             get { return innerlist[index]; }
@@ -50,20 +50,20 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         private bool isReadOnly;
-        public bool IsReadOnly 
+        public bool IsReadOnly
         {
             get
             {
                 return isReadOnly;
             }
-            private set 
+            private set
             {
                 isReadOnly = value;
             }
         }
-        
+
         #endregion Properties
-        
+
         #region Public Methods
         public void Add(FriendGamer item)
         {
@@ -92,23 +92,23 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             innerlist.Clear();
         }
-        
+
         public bool Contains(FriendGamer item)
         {
             return innerlist.Contains(item);
         }
-        
+
         public void CopyTo(FriendGamer[] array, int arrayIndex)
         {
             innerlist.CopyTo(array, arrayIndex);
         }
-        
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        
+
         protected virtual void Dispose(bool disposing)
         {
 
@@ -118,22 +118,22 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             return innerlist.IndexOf(item);
         }
-        
+
         public void Insert(int index, FriendGamer item)
         {
             innerlist.Insert(index, item);
         }
-        
+
         public bool Remove(FriendGamer item)
         {
             return innerlist.Remove(item);
         }
-        
+
         public void RemoveAt(int index)
         {
             innerlist.RemoveAt(index);
         }
-        
+
         public IEnumerator<FriendGamer> GetEnumerator()
         {
             return innerlist.GetEnumerator();
@@ -143,7 +143,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             return innerlist.GetEnumerator();
         }
-        
+
         #endregion Methods
     }
 }

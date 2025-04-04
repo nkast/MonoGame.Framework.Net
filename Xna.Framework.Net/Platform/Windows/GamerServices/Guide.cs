@@ -37,8 +37,6 @@ using Microsoft.Xna.Framework.Net;
 
 namespace Microsoft.Xna.Framework.GamerServices
 {
-
-
     public static class Guide
     {
         private static bool isScreenSaverEnabled;
@@ -64,14 +62,14 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         delegate string ShowKeyboardInputDelegate(
-         MGXna_Framework.PlayerIndex player,           
+         MGXna_Framework.PlayerIndex player,
          string title,
          string description,
          string defaultText,
          bool usePasswordMode);
 
         private static string ShowKeyboardInput(
-         MGXna_Framework.PlayerIndex player,           
+         MGXna_Framework.PlayerIndex player,
          string title,
          string description,
          string defaultText,
@@ -99,38 +97,38 @@ namespace Microsoft.Xna.Framework.GamerServices
 #endif
         }
 
-        public static IAsyncResult BeginShowKeyboardInput (
-         MGXna_Framework.PlayerIndex player,
-         string title,
-         string description,
-         string defaultText,
-         AsyncCallback callback,
-         Object state)
+        public static IAsyncResult BeginShowKeyboardInput(
+            MGXna_Framework.PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state)
         {
 #if WP8
 
             // Call the Microsoft implementation of BeginShowKeyboardInput using an alias.
             return MsXna_Guide.BeginShowKeyboardInput((MsXna_PlayerIndex)player, title, description, defaultText, callback, state);
 #else
-            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false );
+            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false);
 #endif
         }
 
-        public static IAsyncResult BeginShowKeyboardInput (
-         MGXna_Framework.PlayerIndex player,
-         string title,
-         string description,
-         string defaultText,
-         AsyncCallback callback,
-         Object state,
-         bool usePasswordMode)
+        public static IAsyncResult BeginShowKeyboardInput(
+            MGXna_Framework.PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state,
+            bool usePasswordMode)
         {
 #if WP8
 
             // Call the Microsoft implementation of BeginShowKeyboardInput using an alias.
             return MsXna_Guide.BeginShowKeyboardInput((MsXna_PlayerIndex)player, title, description, defaultText, callback, state, usePasswordMode);
 #elif !WINDOWS_UAP
-            ShowKeyboardInputDelegate ski = ShowKeyboardInput; 
+            ShowKeyboardInputDelegate ski = ShowKeyboardInput;
 
             return ski.BeginInvoke(player, title, description, defaultText, usePasswordMode, callback, ski);
 #else
@@ -138,32 +136,34 @@ namespace Microsoft.Xna.Framework.GamerServices
 #endif
         }
 
-        public static string EndShowKeyboardInput (IAsyncResult result)
+        public static string EndShowKeyboardInput(IAsyncResult result)
         {
 #if WP8
 
             // Call the Microsoft implementation of BeginShowKeyboardInput using an alias.
             return MsXna_Guide.EndShowKeyboardInput(result);
 #elif !WINDOWS_UAP
-            ShowKeyboardInputDelegate ski = (ShowKeyboardInputDelegate)result.AsyncState; 
+            ShowKeyboardInputDelegate ski = (ShowKeyboardInputDelegate)result.AsyncState;
 
-            return ski.EndInvoke(result);		
+            return ski.EndInvoke(result);
 #else
             throw new NotImplementedException();
 #endif
         }
 
-        delegate Nullable<int> ShowMessageBoxDelegate(string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon);
+        delegate Nullable<int> ShowMessageBoxDelegate(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon);
 
-        private static Nullable<int> ShowMessageBox(string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon)
+        private static Nullable<int> ShowMessageBox(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon)
         {
             int? result = null;
             IsVisible = true;
@@ -194,15 +194,14 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         public static IAsyncResult BeginShowMessageBox(
-         MGXna_Framework.PlayerIndex player,
-         string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon,
-         AsyncCallback callback,
-         Object state
-        )
+            MGXna_Framework.PlayerIndex player,
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
 #if WP8
 
@@ -253,14 +252,13 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         public static IAsyncResult BeginShowMessageBox(
-         string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon,
-         AsyncCallback callback,
-         Object state
-        )
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
             return BeginShowMessageBox(MGXna_Framework.PlayerIndex.One, title, text, buttons, focusButton, icon, callback, state);
         }
@@ -295,14 +293,14 @@ namespace Microsoft.Xna.Framework.GamerServices
 #endif
         }
 
-        public static void Show ()
+        public static void Show()
         {
             ShowSignIn(1, false);
         }
 
-        public static void ShowSignIn (int paneCount, bool onlineOnly)
+        public static void ShowSignIn(int paneCount, bool onlineOnly)
         {
-            if ( paneCount != 1 && paneCount != 2 && paneCount != 4)
+            if (paneCount != 1 && paneCount != 2 && paneCount != 4)
             {
                 new ArgumentException("paneCount Can only be 1, 2 or 4 on Windows");
                 return;
@@ -391,8 +389,8 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         #region Properties
-        public static bool IsScreenSaverEnabled 
-        { 
+        public static bool IsScreenSaverEnabled
+        {
             get
             {
                 return isScreenSaverEnabled;
@@ -403,8 +401,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool IsTrialMode 
-        { 
+        public static bool IsTrialMode
+        {
             get
             {
                 // If simulate trial mode is enabled then 
@@ -419,8 +417,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool IsVisible 
-        { 
+        public static bool IsVisible
+        {
             get
             {
 #if WP8
@@ -435,8 +433,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool SimulateTrialMode 
-        { 
+        public static bool SimulateTrialMode
+        {
             get
             {
                 return simulateTrialMode;
@@ -447,8 +445,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static MGXna_Framework.GameWindow Window 
-        { 
+        public static MGXna_Framework.GameWindow Window
+        {
             get;
             set;
         }

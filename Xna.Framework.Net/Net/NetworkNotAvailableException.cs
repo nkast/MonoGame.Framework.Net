@@ -16,17 +16,17 @@ namespace Microsoft.Xna.Framework.Net
     {
         public NetworkNotAvailableException()
         {
-            
+
         }
-        
-        public NetworkNotAvailableException( string message ) : base(message)
+
+        public NetworkNotAvailableException(string message) : base(message)
         {
-            
+
         }
-        
-        public NetworkNotAvailableException (string message, Exception innerException) : base(message, innerException)
+
+        public NetworkNotAvailableException(string message, Exception innerException) : base(message, innerException)
         {
-            
+
         }
     }
 }

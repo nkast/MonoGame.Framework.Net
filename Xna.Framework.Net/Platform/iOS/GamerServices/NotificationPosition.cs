@@ -4,8 +4,10 @@
 
 using System;
 
-namespace Microsoft.Xna.Framework.GamerServices {
-    public enum NotificationPosition {
+namespace Microsoft.Xna.Framework.GamerServices
+{
+    public enum NotificationPosition
+    {
         TopLeft,
         TopCenter,
         TopRight,

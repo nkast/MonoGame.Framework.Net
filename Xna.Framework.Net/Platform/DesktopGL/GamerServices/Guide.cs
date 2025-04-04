@@ -12,7 +12,6 @@ using System.Runtime.Remoting.Messaging;
 using Microsoft.Xna.Framework.Net;
 
 
-
 namespace Microsoft.Xna.Framework.GamerServices
 {
     public static class Guide
@@ -20,66 +19,68 @@ namespace Microsoft.Xna.Framework.GamerServices
         private static bool isScreenSaverEnabled;
         private static bool isTrialMode;
         private static bool isVisible;
-        private static bool simulateTrialMode;		
+        private static bool simulateTrialMode;
 
         delegate string ShowKeyboardInputDelegate(
-         PlayerIndex player,           
-         string title,
-         string description,
-         string defaultText,
-         bool usePasswordMode);
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            bool usePasswordMode);
 
         public static string ShowKeyboardInput(
-         PlayerIndex player,           
-         string title,
-         string description,
-         string defaultText,
-         bool usePasswordMode)
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            bool usePasswordMode)
         {
             throw new NotImplementedException();
         }
 
-        public static IAsyncResult BeginShowKeyboardInput (
-         PlayerIndex player,
-         string title,
-         string description,
-         string defaultText,
-         AsyncCallback callback,
-         Object state)
+        public static IAsyncResult BeginShowKeyboardInput(
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state)
         {
-            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false );
+            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false);
         }
 
-        public static IAsyncResult BeginShowKeyboardInput (
-         PlayerIndex player,
-         string title,
-         string description,
-         string defaultText,
-         AsyncCallback callback,
-         Object state,
-         bool usePasswordMode)
+        public static IAsyncResult BeginShowKeyboardInput(
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state,
+            bool usePasswordMode)
         {
-            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false );
+            return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false);
         }
 
-        public static string EndShowKeyboardInput (IAsyncResult result)
+        public static string EndShowKeyboardInput(IAsyncResult result)
         {
-            ShowKeyboardInputDelegate ski = (ShowKeyboardInputDelegate)result.AsyncState; 
+            ShowKeyboardInputDelegate ski = (ShowKeyboardInputDelegate)result.AsyncState;
 
-            return ski.EndInvoke(result);			
+            return ski.EndInvoke(result);
         }
 
-        delegate Nullable<int> ShowMessageBoxDelegate( string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon);
+        delegate Nullable<int> ShowMessageBoxDelegate(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon);
 
-        public static Nullable<int> ShowMessageBox( string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon)
+        public static Nullable<int> ShowMessageBox(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon)
         {
             int? result = null;
             IsVisible = true;
@@ -89,16 +90,15 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         public static IAsyncResult BeginShowMessageBox(
-         PlayerIndex player,
-         string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon,
-         AsyncCallback callback,
-         Object state
-        )
-        {	
+            PlayerIndex player,
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
+        {
             if (IsVisible)
                 throw new Exception("The function cannot be completed at this time: the Guide UI is already active. Wait until Guide.IsVisible is false before issuing this call.");
 
@@ -113,41 +113,39 @@ namespace Microsoft.Xna.Framework.GamerServices
 
             ShowMessageBoxDelegate smb = ShowMessageBox;
 
-            return smb.BeginInvoke(title, text, buttons, focusButton, icon, callback, smb);		
+            return smb.BeginInvoke(title, text, buttons, focusButton, icon, callback, smb);
         }
 
-        public static IAsyncResult BeginShowMessageBox (
-         string title,
-         string text,
-         IEnumerable<string> buttons,
-         int focusButton,
-         MessageBoxIcon icon,
-         AsyncCallback callback,
-         Object state
-        )
+        public static IAsyncResult BeginShowMessageBox(
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
             return BeginShowMessageBox(PlayerIndex.One, title, text, buttons, focusButton, icon, callback, state);
         }
 
-        public static Nullable<int> EndShowMessageBox (IAsyncResult result)
+        public static Nullable<int> EndShowMessageBox(IAsyncResult result)
         {
             return ((ShowMessageBoxDelegate)result.AsyncState).EndInvoke(result);
         }
 
-
-        public static void ShowMarketplace (PlayerIndex player )
+        public static void ShowMarketplace(PlayerIndex player)
         {
-            
+
         }
 
-        public static void Show ()
+        public static void Show()
         {
             ShowSignIn(1, false);
         }
 
-        public static void ShowSignIn (int paneCount, bool onlineOnly)
+        public static void ShowSignIn(int paneCount, bool onlineOnly)
         {
-            if ( paneCount != 1 && paneCount != 2 && paneCount != 4)
+            if (paneCount != 1 && paneCount != 2 && paneCount != 4)
             {
                 new ArgumentException("paneCount Can only be 1, 2 or 4 on Windows");
                 return;
@@ -166,10 +164,10 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         public static void ShowLeaderboard()
         {
-            //if ( ( Gamer.SignedInGamers.Count > 0 ) && ( Gamer.SignedInGamers[0].IsSignedInToLive ) )
+            //if ( (Gamer.SignedInGamers.Count > 0) && (Gamer.SignedInGamers[0].IsSignedInToLive) )
             //{
             //    // Lazy load it
-            //    if ( leaderboardController == null )
+            //    if (leaderboardController == null)
             //    {			    	
             //        leaderboardController = new GKLeaderboardViewController();
             //    }
@@ -184,7 +182,7 @@ namespace Microsoft.Xna.Framework.GamerServices
 
             //        if (Window !=null)
             //        {						
-            //            if(viewController == null)
+            //            if (viewController == null)
             //            {
             //                viewController = new UIViewController();
             //                Window.Add(viewController.View);
@@ -200,10 +198,10 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         public static void ShowAchievements()
         {
-            //if ( ( Gamer.SignedInGamers.Count > 0 ) && ( Gamer.SignedInGamers[0].IsSignedInToLive ) )
+            //if ( (Gamer.SignedInGamers.Count > 0) && (Gamer.SignedInGamers[0].IsSignedInToLive) )
             //{
             //    // Lazy load it
-            //    if ( achievementController == null )
+            //    if (achievementController == null)
             //    {
             //        achievementController = new GKAchievementViewController();
             //    }
@@ -218,7 +216,7 @@ namespace Microsoft.Xna.Framework.GamerServices
 
             //        if (Window !=null)
             //        {
-            //            if(viewController == null)
+            //            if (viewController == null)
             //            {
             //                viewController = new UIViewController();
             //                Window.Add(viewController.View);
@@ -233,8 +231,8 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         #region Properties
-        public static bool IsScreenSaverEnabled 
-        { 
+        public static bool IsScreenSaverEnabled
+        {
             get
             {
                 return isScreenSaverEnabled;
@@ -245,16 +243,16 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool IsTrialMode 
-        { 
+        public static bool IsTrialMode
+        {
             get
             {
                 return simulateTrialMode || isTrialMode;
             }
         }
 
-        public static bool IsVisible 
-        { 
+        public static bool IsVisible
+        {
             get
             {
                 return isVisible;
@@ -265,8 +263,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static bool SimulateTrialMode 
-        { 
+        public static bool SimulateTrialMode
+        {
             get
             {
                 return simulateTrialMode;
@@ -277,8 +275,8 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
         }
 
-        public static GameWindow Window 
-        { 
+        public static GameWindow Window
+        {
             get;
             set;
         }

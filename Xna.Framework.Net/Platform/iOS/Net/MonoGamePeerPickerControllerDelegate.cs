@@ -18,21 +18,21 @@ namespace Microsoft.Xna.Framework.Net
     {
         private GKSession gkSession;
         private EventHandler<GKDataReceivedEventArgs> receivedData;
-        
+
         [CLSCompliant(false)]
-        public MonoGamePeerPickerControllerDelegate( GKSession aSession, EventHandler<GKDataReceivedEventArgs> aReceivedData )
+        public MonoGamePeerPickerControllerDelegate(GKSession aSession, EventHandler<GKDataReceivedEventArgs> aReceivedData)
         {
             gkSession = aSession;
             receivedData = aReceivedData;
         }
-        
+
         [CLSCompliant(false)]
         public override void ConnectionTypeSelected(GKPeerPickerController picker, GKPeerPickerConnectionType type)
         {
 #if DEBUG			
-            Console.WriteLine( "User Selected a ConnectionType of : " + type);
+            Console.WriteLine("User Selected a ConnectionType of : " + type);
 #endif
-            if (type == GKPeerPickerConnectionType.Online) 
+            if (type == GKPeerPickerConnectionType.Online)
             {
 
                 picker.Dismiss();
@@ -42,20 +42,20 @@ namespace Microsoft.Xna.Framework.Net
 
             }
         }
-        
+
         /*public override GKSession GetSession(GKPeerPickerController picker, GKPeerPickerConnectionType forType)
         {		
-            Console.WriteLine( "GetSession" );
+            Console.WriteLine("GetSession");
             
             return gkSession;
         }*/
         [CLSCompliant(false)]
-        public override void PeerConnected(GKPeerPickerController picker, string peerId, GKSession toSession)		
+        public override void PeerConnected(GKPeerPickerController picker, string peerId, GKSession toSession)
         {
-#if DEBUG			
-            Console.WriteLine( "Peer ID " + peerId + " Connected to Session ID : " + toSession.SessionID );
+#if DEBUG
+            Console.WriteLine("Peer ID " + peerId + " Connected to Session ID : " + toSession.SessionID);
 #endif
-            
+
             // Use a retaining property to take ownership of the session.
             this.gkSession = toSession;
 
@@ -64,14 +64,14 @@ namespace Microsoft.Xna.Framework.Net
             gkSession.ReceiveData += new EventHandler<GKDataReceivedEventArgs>(receivedData);
 
             picker.Dismiss();
-            
+
             // Remove the picker.
             picker.Delegate = null;
 
             // Start your game.
-            
+
         }
-        
+
         [CLSCompliant(false)]
         public override void ControllerCancelled(GKPeerPickerController picker)
         {

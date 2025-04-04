@@ -13,54 +13,61 @@ namespace Microsoft.Xna.Framework.Net
         GamerStates states;
         string gamerTag = string.Empty;
         string displayName = string.Empty;
-        
-        public CommandGamerJoined (int internalIndex, bool isHost, bool isLocal)
+
+        public CommandGamerJoined(int internalIndex, bool isHost, bool isLocal)
         {
             gamerInternalIndex = internalIndex;
-            
+
             if (isHost)
                 states = states | GamerStates.Host;
             if (isLocal)
                 states = states | GamerStates.Local;
-            
+
         }
-        
-        public CommandGamerJoined (long uniqueIndentifier)
+
+        public CommandGamerJoined(long uniqueIndentifier)
         {
             this.remoteUniqueIdentifier = uniqueIndentifier;
-            
+
         }
-        
-        public string DisplayName {
-            get {
+
+        public string DisplayName
+        {
+            get
+            {
                 return displayName;
             }
-            set {
+            set
+            {
                 displayName = value;
             }
-        }	
-        
-        public string GamerTag {
-            get {
+        }
+
+        public string GamerTag
+        {
+            get
+            {
                 return gamerTag;
             }
-            set {
+            set
+            {
                 gamerTag = value;
             }
-        }	
-        
+        }
+
         public GamerStates State
         {
             get { return states; }
             set { states = value; }
         }
-        
+
         public int InternalIndex
         {
             get { return gamerInternalIndex; }
         }
-        
-        public CommandEventType Command {
+
+        public CommandEventType Command
+        {
             get { return CommandEventType.GamerJoined; }
         }
     }

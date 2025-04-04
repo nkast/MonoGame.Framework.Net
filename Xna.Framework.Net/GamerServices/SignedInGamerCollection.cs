@@ -11,12 +11,14 @@ namespace Microsoft.Xna.Framework.GamerServices
     {
         #region Properties
         // Indexer to get and set words of the containing document:
-        public SignedInGamer this [PlayerIndex index] { 
-            get {
+        public SignedInGamer this[PlayerIndex index]
+        {
+            get
+            {
                 if (this.Count == 0 || (int)index > this.Count - 1)
                     return null;
 
-                return this [(int)index];
+                return this[(int)index];
             }
         }
         #endregion

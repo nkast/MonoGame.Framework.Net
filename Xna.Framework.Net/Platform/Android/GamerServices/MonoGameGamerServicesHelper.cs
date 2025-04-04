@@ -15,7 +15,7 @@ namespace Microsoft.Xna.Framework.GamerServices
     {
         private static MonoLiveGuide guide = null;
 
-        
+
 
         public static void ShowSigninSheet()
         {
@@ -23,15 +23,16 @@ namespace Microsoft.Xna.Framework.GamerServices
             guide.Visible = true;
             Guide.IsVisible = true;
         }
-    
+
         internal static void Initialise(Game game)
         {
             if (guide == null)
             {
-                guide = new MonoLiveGuide(game);                
+                guide = new MonoLiveGuide(game);
                 game.Components.Add(guide);
             }
-        }}
+        }
+    }
 
     internal class MonoLiveGuide : DrawableGameComponent
     {
@@ -134,7 +135,7 @@ namespace Microsoft.Xna.Framework.GamerServices
 
             if ((gameTime.TotalGameTime - gt).TotalSeconds > delay) // close after 10 seconds
             {
-                
+
                 string name = "androiduser";
                 try
                 {
@@ -143,7 +144,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                     {
                         var accounts = mgr.GetAccounts();
                         if (accounts != null && accounts.Length > 0)
-                        {							
+                        {
                             name = accounts[0].Name;
                             if (name.Contains("@"))
                             {
@@ -156,7 +157,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                 catch
                 {
                 }
-                
+
                 SignedInGamer sig = new SignedInGamer();
                 sig.DisplayName = name;
                 sig.Gamertag = name;
@@ -171,8 +172,5 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
             base.Update(gameTime);
         }
-
     }
 }
-
-

@@ -8,20 +8,20 @@ namespace Microsoft.Xna.Framework.GamerServices
 {
     public sealed class LeaderboardWriter : IDisposable
     {
-        public LeaderboardWriter ()
+        public LeaderboardWriter()
         {
         }
 
         public LeaderboardEntry GetLeaderboard(LeaderboardIdentity aLeaderboardIdentity)
         {
-            throw new NotImplementedException ();
+            throw new NotImplementedException();
         }
 
         #region IDisposable implementation
 
-        void IDisposable.Dispose ()
+        void IDisposable.Dispose()
         {
-            throw new NotImplementedException ();
+            throw new NotImplementedException();
         }
 
         #endregion

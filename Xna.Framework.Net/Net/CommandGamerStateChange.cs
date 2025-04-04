@@ -8,19 +8,19 @@ namespace Microsoft.Xna.Framework.Net
 {
     internal class CommandGamerStateChange : ICommand
     {
-        
+
         GamerStates newState;
         GamerStates oldState;
         NetworkGamer gamer;
-        
-        public CommandGamerStateChange (NetworkGamer gamer)
+
+        public CommandGamerStateChange(NetworkGamer gamer)
         {
             this.gamer = gamer;
             this.newState = gamer.State;
             this.oldState = gamer.OldState;
         }
-        
-        public NetworkGamer Gamer 
+
+        public NetworkGamer Gamer
         {
             get { return gamer; }
         }
@@ -28,15 +28,16 @@ namespace Microsoft.Xna.Framework.Net
         {
             get { return newState; }
         }
-        
+
         public GamerStates OldState
         {
             get { return oldState; }
         }
-        
-        public CommandEventType Command {
+
+        public CommandEventType Command
+        {
             get { return CommandEventType.GamerStateChange; }
-        }		
+        }
     }
 }
 

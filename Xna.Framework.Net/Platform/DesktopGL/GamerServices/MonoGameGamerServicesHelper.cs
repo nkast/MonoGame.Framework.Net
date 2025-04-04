@@ -24,10 +24,11 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             if (guide == null)
             {
-                guide = new MonoLiveGuide(game);                
+                guide = new MonoLiveGuide(game);
                 game.Components.Add(guide);
             }
-        }}
+        }
+    }
 
     internal class MonoLiveGuide : DrawableGameComponent
     {
@@ -150,6 +151,5 @@ namespace Microsoft.Xna.Framework.GamerServices
             }
             base.Update(gameTime);
         }
-
     }
 }

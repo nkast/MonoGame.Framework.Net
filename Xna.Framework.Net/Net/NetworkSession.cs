@@ -84,20 +84,20 @@ namespace Microsoft.Xna.Framework.Net
 
             _allGamers = new GamerCollection<NetworkGamer>();
             _localGamers = new GamerCollection<LocalNetworkGamer>();
-            //			for (int x = 0; x < Gamer.SignedInGamers.Count; x++) {
-            //				GamerStates states = GamerStates.Local;
-            //				if (x == 0)
-            //					states |= GamerStates.Host;
-            //				LocalNetworkGamer localGamer = new LocalNetworkGamer(this, (byte)x, states);
-            //				localGamer.SignedInGamer = Gamer.SignedInGamers[x];
-            //				_allGamers.AddGamer(localGamer);
-            //				_localGamers.AddGamer(localGamer);
-            //				
-            //				// We will attach a property change handler to local gamers
-            //				//  se that we can broadcast the change to other peers.
-            //				localGamer.PropertyChanged += HandleGamerPropertyChanged;	
-            //				
-            //			}
+            // for (int x = 0; x < Gamer.SignedInGamers.Count; x++)
+            // {
+            //     GamerStates states = GamerStates.Local;
+            //     if (x == 0)
+            //         states |= GamerStates.Host;
+            //     LocalNetworkGamer localGamer = new LocalNetworkGamer(this, (byte)x, states);
+            //     localGamer.SignedInGamer = Gamer.SignedInGamers[x];
+            //     _allGamers.AddGamer(localGamer);
+            //     _localGamers.AddGamer(localGamer);
+            //
+            //     // We will attach a property change handler to local gamers
+            //     //  se that we can broadcast the change to other peers.
+            //     localGamer.PropertyChanged += HandleGamerPropertyChanged;
+            // }
 
             _remoteGamers = new GamerCollection<NetworkGamer>();
             _previousGamers = new GamerCollection<NetworkGamer>();
@@ -997,15 +997,19 @@ namespace Microsoft.Xna.Framework.Net
         }
 
         /*
-        public int BytesPerSecondReceived { 
-            get {
-                throw new NotImplementedException ();
+        public int BytesPerSecondReceived
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
 
-        public int BytesPerSecondSent { 
-            get {
-                throw new NotImplementedException ();
+        public int BytesPerSecondSent
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
         */

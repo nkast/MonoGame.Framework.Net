@@ -11,7 +11,7 @@ namespace Microsoft.Xna.Framework.GamerServices
     [DataContract]
     public class Achievement
     {
-        public Achievement ()
+        public Achievement()
         {
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         [DataMember]
         public string Name { get; internal set; }
 
-        public Stream GetPicture ()
+        public Stream GetPicture()
         {
             throw new NotImplementedException();
         }

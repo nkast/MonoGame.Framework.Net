@@ -11,18 +11,18 @@ namespace Microsoft.Xna.Framework.GamerServices
     public class GuideAlreadyVisibleException : Exception
     {
 
-        public GuideAlreadyVisibleException ()
+        public GuideAlreadyVisibleException()
         {
         }
-        
-        public GuideAlreadyVisibleException( string message )
+
+        public GuideAlreadyVisibleException(string message)
         {
-            
+
         }
 
         public GuideAlreadyVisibleException(string message, Exception innerException)
         {
-            
+
         }
     }
 }

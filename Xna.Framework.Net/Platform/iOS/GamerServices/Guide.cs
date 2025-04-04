@@ -165,10 +165,18 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         delegate string ShowKeyboardInputDelegate(
-            string title, string description, string defaultText, Object state, bool usePasswordMode);
+            string title,
+            string description,
+            string defaultText,
+            Object state,
+            bool usePasswordMode);
 
         private static string ShowKeyboardInput(
-            string title, string description, string defaultText, Object state, bool usePasswordMode)
+            string title,
+            string description,
+            string defaultText,
+            Object state,
+            bool usePasswordMode)
         {
             string result = null;
 
@@ -202,16 +210,25 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         public static IAsyncResult BeginShowKeyboardInput(
-            PlayerIndex player, string title, string description, string defaultText,
-            AsyncCallback callback, Object state)
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state)
         {
             AssertInitialised();
             return BeginShowKeyboardInput(player, title, description, defaultText, callback, state, false);
         }
 
         public static IAsyncResult BeginShowKeyboardInput(
-            PlayerIndex player, string title, string description, string defaultText,
-            AsyncCallback callback, Object state, bool usePasswordMode)
+            PlayerIndex player,
+            string title,
+            string description,
+            string defaultText,
+            AsyncCallback callback,
+            Object state,
+            bool usePasswordMode)
         {
             AssertInitialised();
 
@@ -230,10 +247,18 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         delegate Nullable<nint> ShowMessageBoxDelegate(
-            string title, string text, IEnumerable<string> buttons, nint focusButton, MessageBoxIcon icon);
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            nint focusButton,
+            MessageBoxIcon icon);
 
         private static Nullable<nint> ShowMessageBox(
-            string title, string text, IEnumerable<string> buttons, nint focusButton, MessageBoxIcon icon)
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            nint focusButton,
+            MessageBoxIcon icon)
         {
             Nullable<nint> result = null;
 
@@ -263,23 +288,33 @@ namespace Microsoft.Xna.Framework.GamerServices
         }
 
         public static IAsyncResult BeginShowMessageBox(
-            PlayerIndex player, string title, string text, IEnumerable<string> buttons, nint focusButton,
-            MessageBoxIcon icon, AsyncCallback callback, Object state)
+            PlayerIndex player,
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            nint focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
             if (IsVisible)
                 throw new GuideAlreadyVisibleException("The function cannot be completed at this time: the Guide UI is already active. Wait until Guide.IsVisible is false before issuing this call.");
 
             IsVisible = true;
 
-            ShowMessageBoxDelegate smb = ShowMessageBox; 
+            ShowMessageBoxDelegate smb = ShowMessageBox;
 
             return smb.BeginInvoke(title, text, buttons, focusButton, icon, callback, smb);         
         }
 
         public static IAsyncResult BeginShowMessageBox(
-            string title, string text, IEnumerable<string> buttons, int focusButton, MessageBoxIcon icon,
-            AsyncCallback callback, Object state
-        )
+            string title,
+            string text,
+            IEnumerable<string> buttons,
+            int focusButton,
+            MessageBoxIcon icon,
+            AsyncCallback callback,
+            Object state)
         {
             return BeginShowMessageBox(PlayerIndex.One, title, text, buttons, focusButton, icon, callback, state);
         }

@@ -11,70 +11,80 @@ namespace Microsoft.Xna.Framework.GamerServices
     internal class MonoGameLocalGamerProfile
     {
         Guid playerGuid;
-        
-        internal MonoGameLocalGamerProfile ()
+
+        internal MonoGameLocalGamerProfile()
         {
             playerGuid = Guid.NewGuid();
         }
 
         #region Properties
-        
+
         internal Guid PlayerInternalIdentifier
         {
             get { return playerGuid; }
             set { playerGuid = value; }
         }
-        
-        internal string DisplayName {
+
+        internal string DisplayName
+        {
             get;
             set;
         }
 
-        internal string Gamertag {
+        internal string Gamertag
+        {
             get;
             set;
         }
 
 
-        internal byte[] GamerPicture {
-            get;
-            set;
-        }
-        
-        internal int GamerScore {
+        internal byte[] GamerPicture
+        {
             get;
             set;
         }
 
-        internal GamerZone GamerZone {
+        internal int GamerScore
+        {
             get;
             set;
         }
 
-        internal string Motto {
+        internal GamerZone GamerZone
+        {
             get;
             set;
         }
 
-        internal RegionInfo Region {
+        internal string Motto
+        {
             get;
             set;
         }
 
-        internal float Reputation {
+        internal RegionInfo Region
+        {
             get;
             set;
         }
 
-        internal int TitlesPlayed {
+        internal float Reputation
+        {
             get;
             set;
         }
 
-        internal int TotalAchievements {
+        internal int TitlesPlayed
+        {
             get;
             set;
-        }		
+        }
+
+        internal int TotalAchievements
+        {
+            get;
+            set;
+        }
         #endregion
     }
 }

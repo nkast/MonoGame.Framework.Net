@@ -22,26 +22,26 @@ namespace Microsoft.Xna.Framework.Net
         public override void PeerChangedState(GKSession session, string peerID, GKPeerConnectionState state)
         {
             LocalNetworkGamer lng = new LocalNetworkGamer();
-            
+
             switch (state)
             {
-                case GKPeerConnectionState.Available :
+                case GKPeerConnectionState.Available:
                     break;
-                case GKPeerConnectionState.Connected :			    
-                    if ( !gamerList.Contains(lng) )
+                case GKPeerConnectionState.Connected:
+                    if (!gamerList.Contains(lng))
                     {
                         gamerList.Add(lng);
                     }
                     break;
-                case GKPeerConnectionState.Connecting :
+                case GKPeerConnectionState.Connecting:
                     break;
-                case GKPeerConnectionState.Disconnected :
-                    if ( gamerList.Contains(lng) )
+                case GKPeerConnectionState.Disconnected:
+                    if (gamerList.Contains(lng))
                     {
                         gamerList.Remove(lng);
                     }
                     break;
-                case GKPeerConnectionState.Unavailable :
+                case GKPeerConnectionState.Unavailable:
                     break;
             }
         }
@@ -49,21 +49,21 @@ namespace Microsoft.Xna.Framework.Net
         public override void PeerConnectionRequest(GKSession session, string peerID)
         {
 #if DEBUG			
-            Console.WriteLine( " Session : " + session.SessionID + " PeerID : " + peerID );
+            Console.WriteLine(" Session : " + session.SessionID + " PeerID : " + peerID);
 #endif
         }
 
         public override void PeerConnectionFailed(GKSession session, string peerID, NSError error)
         {
 #if DEBUG			
-            Console.WriteLine( " Session : " + session.SessionID + " PeerID : " + peerID +" PeerConnectionFailed : " + error );
+            Console.WriteLine(" Session : " + session.SessionID + " PeerID : " + peerID +" PeerConnectionFailed : " + error);
 #endif
         }
 
         public override void FailedWithError(GKSession session, NSError error)
         {
 #if DEBUG
-            Console.WriteLine( " Session : " + session.SessionID + " FailedWithError : " + error );
+            Console.WriteLine(" Session : " + session.SessionID + " FailedWithError : " + error);
 #endif
         }
     }

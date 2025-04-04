@@ -11,21 +11,21 @@ namespace Microsoft.Xna.Framework.Net
 {
     public class NetworkGamer : Gamer, INotifyPropertyChanged
     {
-        
+
         private byte id;
-        NetworkSession session; 
+        NetworkSession session;
         //bool isHost;
         //bool isLocal;
         //bool hasVoice;
         long remoteUniqueIdentifier = -1;
         GamerStates gamerState;
         GamerStates oldGamerState;
-        
+
         // Declare the event
         public event PropertyChangedEventHandler PropertyChanged;
-        
-        
-        public NetworkGamer ( NetworkSession session, byte id, GamerStates state)
+
+
+        public NetworkGamer(NetworkSession session, byte id, GamerStates state)
         {
             this.id = id;
             this.session = session;
@@ -36,94 +36,95 @@ namespace Microsoft.Xna.Framework.Net
             //this.isHost = (state & GamerStates.Host) != 0; // state.HasFlag(GamerStates.Host);
             //this.isLocal = (state & GamerStates.Local) != 0; // state.HasFlag(GamerStates.Local);
             //this.hasVoice = (state & GamerStates.HasVoice) != 0; //state.HasFlag(GamerStates.HasVoice);
-            
+
             // *** NOTE TODO **
             // This whole state stuff need to be looked at again.  Maybe we should not be using local
             //  variables here and instead just use the flags within the gamerState.
-            
+
             this.gamerState = state;
             this.oldGamerState = state;
         }
-        
+
         internal long RemoteUniqueIdentifier
         {
             get { return remoteUniqueIdentifier; }
             set { remoteUniqueIdentifier = value; }
         }
-        
-        public bool HasLeftSession 
-        { 
+
+        public bool HasLeftSession
+        {
             get
             {
                 return false;
             }
         }
-        
-        public bool HasVoice 
-        { 
+
+        public bool HasVoice
+        {
             get
             {
                 return (gamerState & GamerStates.HasVoice) != 0;
             }
         }
-        
-        public byte Id 
-        { 
+
+        public byte Id
+        {
             get
             {
                 return id;
             }
         }
-        
-        public bool IsGuest 
-        { 
+
+        public bool IsGuest
+        {
             get
             {
                 return (gamerState & GamerStates.Guest) != 0;
             }
         }
-        
-        public bool IsHost 
-        { 
+
+        public bool IsHost
+        {
             get
             {
                 return (gamerState & GamerStates.Host) != 0;
             }
         }
-        
-        public bool IsLocal 
-        { 
+
+        public bool IsLocal
+        {
             get
             {
                 return (gamerState & GamerStates.Local) != 0;
             }
         }
-        
-        public bool IsMutedByLocalUser 
-        { 
+
+        public bool IsMutedByLocalUser
+        {
             get
             {
                 return true;
             }
         }
-        
-        public bool IsPrivateSlot 
-        { 
+
+        public bool IsPrivateSlot
+        {
             get
             {
                 return false;
             }
         }
-        
-        public bool IsReady 
-        { 
+
+        public bool IsReady
+        {
             get
             {
                 return (gamerState & GamerStates.Ready) != 0;
             }
             set
             {
-                if (((gamerState & GamerStates.Ready) != 0) != value) {
+                if (((gamerState & GamerStates.Ready) != 0) != value)
+                {
                     if (value)
                         gamerState |= GamerStates.Ready;
                     else
@@ -132,54 +133,56 @@ namespace Microsoft.Xna.Framework.Net
                 }
             }
         }
-        
-        public bool IsTalking 
-        { 
+
+        public bool IsTalking
+        {
             get
             {
                 return false;
             }
         }
-        
+
         private NetworkMachine _Machine;
-        public NetworkMachine Machine 
-        { 
+        public NetworkMachine Machine
+        {
             get
             {
                 return _Machine;
             }
             set
             {
-                if (_Machine != value )
+                if (_Machine != value)
                     _Machine = value;
             }
         }
-        
-        public TimeSpan RoundtripTime 
-        { 
+
+        public TimeSpan RoundtripTime
+        {
             get
             {
                 return TimeSpan.MinValue;
             }
         }
-        
-        public NetworkSession Session 
-        { 
+
+        public NetworkSession Session
+        {
             get
             {
                 return session;
             }
-        } 
-        
-        internal GamerStates State {
+        }
+
+        internal GamerStates State
+        {
             get { return gamerState; }
             set { gamerState = value; }
         }
-        
-        internal GamerStates OldState {
+
+        internal GamerStates OldState
+        {
             get { return oldGamerState; }
-        }		
-        
+        }
+
         // Create the OnPropertyChanged method to raise the event
         protected void OnPropertyChanged(string name)
         {
@@ -189,6 +192,6 @@ namespace Microsoft.Xna.Framework.Net
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        
+
     }
 }

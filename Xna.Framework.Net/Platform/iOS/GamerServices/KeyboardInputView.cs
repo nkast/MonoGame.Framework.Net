@@ -9,11 +9,13 @@ using Foundation;
 using UIKit;
 using CoreGraphics;
 
-namespace Microsoft.Xna.Framework {
-    class KeyboardInputView : UIScrollView {
-        private static readonly PaddingF TitleMargin = new PaddingF (10, 7, 10, 2);
-        private static readonly PaddingF DescriptionMargin = new PaddingF (12, 2, 10, 5);
-        private static readonly PaddingF TextFieldMargin = new PaddingF (10, 5, 10, 5);
+namespace Microsoft.Xna.Framework
+{
+    class KeyboardInputView : UIScrollView
+    {
+        private static readonly PaddingF TitleMargin = new PaddingF(10, 7, 10, 2);
+        private static readonly PaddingF DescriptionMargin = new PaddingF(12, 2, 10, 5);
+        private static readonly PaddingF TextFieldMargin = new PaddingF(10, 5, 10, 5);
 
         private readonly UIToolbar _toolbar;
         private readonly UILabel _title;
@@ -21,92 +23,105 @@ namespace Microsoft.Xna.Framework {
         private readonly UITextField _textField;
         private readonly UIScrollView _textFieldContainer;
 
-        public KeyboardInputView (RectangleF frame)
+        public KeyboardInputView(RectangleF frame)
             : base(frame)
         {
-            _toolbar = new UIToolbar (frame);
+            _toolbar = new UIToolbar(frame);
 
-            var toolbarItems = new UIBarButtonItem[] {
+            var toolbarItems = new UIBarButtonItem[]
+            {
                 new UIBarButtonItem (UIBarButtonSystemItem.Cancel, CancelButton_Tapped),
                 new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace, null),
                 new UIBarButtonItem (UIBarButtonSystemItem.Done, DoneButton_Tapped)
             };
 
-            _toolbar.SetItems (toolbarItems, false);
-            _toolbar.SizeToFit ();
+            _toolbar.SetItems(toolbarItems, false);
+            _toolbar.SizeToFit();
 
-            _title = new UILabel (RectangleF.Empty);
-            _title.Font = UIFont.SystemFontOfSize (UIFont.LabelFontSize * 1.2f);
+            _title = new UILabel(RectangleF.Empty);
+            _title.Font = UIFont.SystemFontOfSize(UIFont.LabelFontSize * 1.2f);
             _title.BackgroundColor = UIColor.Clear;
             _title.LineBreakMode = UILineBreakMode.TailTruncation;
             _title.Lines = 2;
 
-            _description = new UILabel (RectangleF.Empty);
-            _description.Font = UIFont.SystemFontOfSize (UIFont.LabelFontSize);
-            _description.TextColor = UIColor.DarkTextColor.ColorWithAlpha (0.95f);
+            _description = new UILabel(RectangleF.Empty);
+            _description.Font = UIFont.SystemFontOfSize(UIFont.LabelFontSize);
+            _description.TextColor = UIColor.DarkTextColor.ColorWithAlpha(0.95f);
             _description.BackgroundColor = UIColor.Clear;
             _title.LineBreakMode = UILineBreakMode.TailTruncation;
             _description.Lines = 2;
 
             _textFieldContainer = new UIScrollView(new RectangleF(0, 0, 100, 100));
 
-            _textField = new UITextField (_textFieldContainer.Bounds);
+            _textField = new UITextField(_textFieldContainer.Bounds);
             _textField.AutoresizingMask =
                 UIViewAutoresizing.FlexibleWidth |
                 UIViewAutoresizing.FlexibleHeight;
             _textField.BorderStyle = UITextBorderStyle.RoundedRect;
-            _textField.Delegate = new TextFieldDelegate (this);
+            _textField.Delegate = new TextFieldDelegate(this);
 
-            _textFieldContainer.Add (_textField);
+            _textFieldContainer.Add(_textField);
 
-            Add (_toolbar);
-            Add (_title);
-            Add (_description);
-            Add (_textFieldContainer);
+            Add(_toolbar);
+            Add(_title);
+            Add(_description);
+            Add(_textFieldContainer);
 
             AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
             AutosizesSubviews = false;
             Opaque = true;
-            BackgroundColor = UIColor.FromRGB (0xC5, 0xCC, 0xD4);
+            BackgroundColor = UIColor.FromRGB(0xC5, 0xCC, 0xD4);
 
-            SetNeedsLayout ();
+            SetNeedsLayout();
         }
 
         #region Properties
 
-        public string Title {
+        public string Title
+        {
             get { return _title.Text; }
-            set {
-                if (_title.Text != value) {
+            set
+            {
+                if (_title.Text != value)
+                {
                     _title.Text = value;
-                    SetNeedsLayout ();
+                    SetNeedsLayout();
                 }
             }
         }
 
-        public new string Description {
+        public new string Description
+        {
             get { return _description.Text; }
-            set {
-                if (_description.Text != value) {
+            set
+            {
+                if (_description.Text != value)
+                {
                     _description.Text = value;
-                    SetNeedsLayout ();
+                    SetNeedsLayout();
                 }
             }
         }
 
-        public string Text {
+        public string Text
+        {
             get { return _textField.Text; }
-            set {
-                if (_textField.Text != value) {
+            set
+            {
+                if (_textField.Text != value)
+                {
                     _textField.Text = value;
                 }
             }
         }
 
-        public bool UsePasswordMode {
+        public bool UsePasswordMode
+        {
             get { return _textField.SecureTextEntry; }
-            set {
-                if (_textField.SecureTextEntry != value) {
+            set
+            {
+                if (_textField.SecureTextEntry != value)
+                {
                     _textField.SecureTextEntry = value;
                 }
             }
@@ -121,12 +136,12 @@ namespace Microsoft.Xna.Framework {
 
         #endregion Events
 
-        public void ActivateFirstField ()
+        public void ActivateFirstField()
         {
-            _textField.BecomeFirstResponder ();
+            _textField.BecomeFirstResponder();
         }
 
-        public void ScrollActiveFieldToVisible ()
+        public void ScrollActiveFieldToVisible()
         {
             if (!_textField.IsFirstResponder)
                 return;
@@ -137,36 +152,37 @@ namespace Microsoft.Xna.Framework {
             bounds.Y += ContentInset.Top;
             bounds.Height -= (ContentInset.Top + ContentInset.Bottom);
 
-            if (!bounds.Contains(_textFieldContainer.Frame)) {
-                ScrollRectToVisible (_textFieldContainer.Frame, true);
+            if (!bounds.Contains(_textFieldContainer.Frame))
+            {
+                ScrollRectToVisible(_textFieldContainer.Frame, true);
             }
         }
 
         public override void TouchesEnded(NSSet touches, UIEvent evt)
         {
             base.TouchesEnded(touches, evt);
-            _textField.ResignFirstResponder ();
+            _textField.ResignFirstResponder();
         }
 
-        public override void LayoutSubviews ()
+        public override void LayoutSubviews()
         {
-            _toolbar.SizeToFit ();
+            _toolbar.SizeToFit();
 
-            var titleSize = SizeThatFitsWidth (_title, Bounds.Width - TitleMargin.Horizontal);
-            _title.Frame = new CGRect (
+            var titleSize = SizeThatFitsWidth(_title, Bounds.Width - TitleMargin.Horizontal);
+            _title.Frame = new CGRect(
                 TitleMargin.Left, _toolbar.Bounds.Bottom + TitleMargin.Top,
                 titleSize.Width, titleSize.Height);
 
-            var descriptionSize = SizeThatFitsWidth (
+            var descriptionSize = SizeThatFitsWidth(
                 _description, Bounds.Width - DescriptionMargin.Horizontal);
-            _description.Frame = new CGRect (
+            _description.Frame = new CGRect(
                 DescriptionMargin.Left,
                 _title.Frame.Bottom + TitleMargin.Bottom + DescriptionMargin.Top,
                 descriptionSize.Width, descriptionSize.Height);
 
-            var textFieldSize = _textField.SizeThatFits (
+            var textFieldSize = _textField.SizeThatFits(
                 new CGSize(Bounds.Width - TextFieldMargin.Horizontal, Bounds.Height));
-            _textFieldContainer.Frame = new CGRect (
+            _textFieldContainer.Frame = new CGRect(
                 TextFieldMargin.Left,
                 _description.Frame.Bottom + DescriptionMargin.Bottom + TextFieldMargin.Top,
                 Bounds.Width - TextFieldMargin.Horizontal, textFieldSize.Height);
@@ -180,14 +196,14 @@ namespace Microsoft.Xna.Framework {
             return label.SizeThatFits(new CGSize(width, font.LineHeight * label.Lines));
         }
 
-        private void DoneButton_Tapped (object sender, EventArgs e)
+        private void DoneButton_Tapped(object sender, EventArgs e)
         {
-            OnInputAccepted (e);
+            OnInputAccepted(e);
         }
 
-        private void CancelButton_Tapped (object sender, EventArgs e)
+        private void CancelButton_Tapped(object sender, EventArgs e)
         {
-            OnInputCanceled (e);
+            OnInputCanceled(e);
         }
 
         private void OnInputAccepted(EventArgs e)
@@ -203,16 +219,16 @@ namespace Microsoft.Xna.Framework {
         private class TextFieldDelegate : UITextFieldDelegate
         {
             private readonly KeyboardInputView _owner;
-            public TextFieldDelegate (KeyboardInputView owner)
+            public TextFieldDelegate(KeyboardInputView owner)
             {
                 if (owner == null)
-                    throw new ArgumentNullException ("owner");
+                    throw new ArgumentNullException("owner");
                 _owner = owner;
             }
 
             public override bool ShouldReturn(UITextField textField)
             {
-                _owner.OnInputAccepted (EventArgs.Empty);
+                _owner.OnInputAccepted(EventArgs.Empty);
                 return true;
             }
         }
