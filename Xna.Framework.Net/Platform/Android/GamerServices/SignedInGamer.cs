@@ -12,8 +12,6 @@ namespace Microsoft.Xna.Framework.GamerServices
 {
     public class SignedInGamer : Gamer
     {
-        // TODO private GKLocalPlayer lp;
-
         private AchievementCollection gamerAchievements;
         private FriendCollection friendCollection;
         private bool isSignedInToLive = true;
