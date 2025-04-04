@@ -26,36 +26,36 @@ using System.Diagnostics;
 
 namespace Lidgren.Network
 {
-	/// <summary>
-	/// Time service
-	/// </summary>
-	public static class NetTime
-	{
+    /// <summary>
+    /// Time service
+    /// </summary>
+    public static class NetTime
+    {
 #if IS_STOPWATCH_AVAILABLE
-		private static readonly long s_timeInitialized = Stopwatch.GetTimestamp();
-		private static readonly double s_dInvFreq = 1.0 / (double)Stopwatch.Frequency;
+        private static readonly long s_timeInitialized = Stopwatch.GetTimestamp();
+        private static readonly double s_dInvFreq = 1.0 / (double)Stopwatch.Frequency;
 
-		/// <summary>
-		/// Get number of seconds since the application started
-		/// </summary>
-		public static double Now { get { return (double)(Stopwatch.GetTimestamp() - s_timeInitialized) * s_dInvFreq; } }
+        /// <summary>
+        /// Get number of seconds since the application started
+        /// </summary>
+        public static double Now { get { return (double)(Stopwatch.GetTimestamp() - s_timeInitialized) * s_dInvFreq; } }
 #else
-		private static readonly uint s_timeInitialized = (uint)Environment.TickCount;
+        private static readonly uint s_timeInitialized = (uint)Environment.TickCount;
 
-		/// <summary>
-		/// Get number of seconds since the application started
-		/// </summary>
-		public static double Now { get { return (double)((uint)Environment.TickCount - s_timeInitialized) / 1000.0; } }
+        /// <summary>
+        /// Get number of seconds since the application started
+        /// </summary>
+        public static double Now { get { return (double)((uint)Environment.TickCount - s_timeInitialized) / 1000.0; } }
 #endif
 
-		/// <summary>
-		/// Given seconds it will output a human friendly readable string (milliseconds if less than 60 seconds)
-		/// </summary>
-		public static string ToReadable(double seconds)
-		{
-			if (seconds > 60)
-				return TimeSpan.FromSeconds(seconds).ToString();
-			return (seconds * 1000.0).ToString("N2") + " ms";
-		}
-	}
+        /// <summary>
+        /// Given seconds it will output a human friendly readable string (milliseconds if less than 60 seconds)
+        /// </summary>
+        public static string ToReadable(double seconds)
+        {
+            if (seconds > 60)
+                return TimeSpan.FromSeconds(seconds).ToString();
+            return (seconds * 1000.0).ToString("N2") + " ms";
+        }
+    }
 }
