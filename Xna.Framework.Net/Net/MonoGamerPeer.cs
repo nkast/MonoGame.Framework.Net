@@ -40,7 +40,6 @@ namespace Microsoft.Xna.Framework.Net
 
         static MonoGamerPeer()
         {
-#if !WP8
             // This code looks up the Guid for the host app , this is used to identify the
             // application on the network . We use the Guid as that is unique to that application.			
             var assembly = System.Reflection.Assembly.GetAssembly(Game.Instance.GetType());
@@ -52,9 +51,6 @@ namespace Microsoft.Xna.Framework.Net
                     applicationIdentifier = ((System.Runtime.InteropServices.GuidAttribute)objects[0]).Value;
                 }
             }
-#else
-            
-#endif
         }
 
         public MonoGamerPeer(NetworkSession session, AvailableNetworkSession availableSession)
@@ -483,7 +479,6 @@ namespace Microsoft.Xna.Framework.Net
         internal static string GetMyLocalIpAddress()
         {
             string localIP = "?";
-#if !WP8
             IPHostEntry host;
 
             host = Dns.GetHostEntry(Dns.GetHostName());
@@ -497,13 +492,7 @@ namespace Microsoft.Xna.Framework.Net
                     break;
                 }
             }
-#else
-            FindMyIP.MyIPAddress ip = new FindMyIP.MyIPAddress();
-            var addr = ip.Find();
-            localIP = addr.ToString();
 
- 
-#endif
             return localIP;
         }
 
@@ -838,102 +827,3 @@ namespace Microsoft.Xna.Framework.Net
 
 }
 
-
-#if WP8
-namespace FindMyIP
-{
-    using System;
-    using System.Net;
-    using System.Net.Sockets;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Text;
-
-    public class MyIPAddress
-    {
-        Action<IPAddress> FoundCallback;
-        UdpAnySourceMulticastClient MulticastSocket;
-        const int PortNumber = 50000;       // pick a number, any number
-        string MulticastMessage = "FIND-MY-IP-PLEASE" + new Random().Next().ToString();
- 
-        public void Find(Action<IPAddress> callback)
-        {
-            FoundCallback = callback;
- 
-            MulticastSocket = new UdpAnySourceMulticastClient(IPAddress.Parse("239.255.255.250"), PortNumber);
-            MulticastSocket.BeginJoinGroup((result) =>
-            {
-                try
-                {
-                    MulticastSocket.EndJoinGroup(result);
-                    GroupJoined(result);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine("EndjoinGroup exception {0}", ex.Message);
-                    // This can happen eg when wifi is off
-                    FoundCallback(null);
-                }
-            },
-                null);
-        }
- 
-        void callback_send(IAsyncResult result)
-        {
-        }
- 
-        byte[] MulticastData;
-        bool keepsearching;
- 
-        void GroupJoined(IAsyncResult result)
-        {
-            MulticastData = Encoding.UTF8.GetBytes(MulticastMessage);
-            keepsearching = true;
-            MulticastSocket.BeginSendToGroup(MulticastData, 0, MulticastData.Length, callback_send, null);
- 
-            while (keepsearching)
-            {
-                try
-                {
-                    byte[] buffer = new byte[MulticastData.Length];
-                    MulticastSocket.BeginReceiveFromGroup(buffer, 0, buffer.Length, DoneReceiveFromGroup, buffer);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine("Stopped Group read due to " + ex.Message);
-                    keepsearching = false;
-                }
-            }
-        }
- 
-        void DoneReceiveFromGroup(IAsyncResult result)
-        {
-            IPEndPoint where;
-            int responselength = MulticastSocket.EndReceiveFromGroup(result, out where);
-            byte[] buffer = result.AsyncState as byte[];
-            if (responselength == MulticastData.Length && buffer.SequenceEqual(MulticastData))
-            {
-                Debug.WriteLine("FOUND myself at " + where.Address.ToString());
-                keepsearching = false;
-                FoundCallback(where.Address);
-            }
-        }
-
-        static ManualResetEvent _clientDone = new ManualResetEvent(false);
-
-        public IPAddress Find()
-        {
-            var ip = IPAddress.None;
-            _clientDone.Reset();
-            Find((a) =>
-            {
-                ip = a;
-                _clientDone.Set();
-            });
-            
-            _clientDone.WaitOne(1000);
-            return ip;
-        }
-    }
-}
-#endif

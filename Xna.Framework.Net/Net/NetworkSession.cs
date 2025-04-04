@@ -5,9 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-#if !WP8
 using System.Runtime.Remoting.Messaging;
-#endif
 using System.Threading;
 
 using Microsoft.Xna.Framework.GamerServices;
@@ -149,11 +147,7 @@ namespace Microsoft.Xna.Framework.Net
         {
             try
             {
-#if WP8
-                return Create(sessionType, maxLocalGamers, maxGamers, 0, null, 0, false);
-#else
                 return EndCreate(BeginCreate(sessionType, maxLocalGamers, maxGamers, null, null));
-#endif
             }
             finally
             {
@@ -171,11 +165,7 @@ namespace Microsoft.Xna.Framework.Net
         {
             try
             {
-#if WP8
-                return Create(sessionType, maxLocalGamers, maxGamers, privateGamerSlots, sessionProperties, 0, false);
-#else
                 return EndCreate(BeginCreate(sessionType, maxLocalGamers, maxGamers, privateGamerSlots, sessionProperties, null, null));
-#endif
             }
             finally
             {
@@ -452,9 +442,6 @@ namespace Microsoft.Xna.Framework.Net
             NetworkSession returnValue = null;
             try
             {
-#if WP8
-                return null;
-#else
                 // Retrieve the delegate.
                 AsyncResult asyncResult = (AsyncResult)result;
 
@@ -467,7 +454,6 @@ namespace Microsoft.Xna.Framework.Net
                 {
                     returnValue = ((NetworkSessionAsynchronousCreate)asyncResult.AsyncDelegate).EndInvoke(result);
                 }
-#endif
             }
             finally
             {
@@ -486,9 +472,6 @@ namespace Microsoft.Xna.Framework.Net
             try
             {
                 // Retrieve the delegate.
-#if WP8
-                MonoGamerPeer.FindResults(networkSessions);
-#else
                 AsyncResult asyncResult = (AsyncResult)result;
 
 
@@ -503,7 +486,6 @@ namespace Microsoft.Xna.Framework.Net
 
                     MonoGamerPeer.FindResults(networkSessions);
                 }
-#endif
 
             }
             finally
@@ -533,8 +515,6 @@ namespace Microsoft.Xna.Framework.Net
             NetworkSession returnValue = null;
             try
             {
-#if WP8
-#else
                 // Retrieve the delegate.
                 AsyncResult asyncResult = (AsyncResult)result;
 
@@ -546,7 +526,6 @@ namespace Microsoft.Xna.Framework.Net
                 {
                     returnValue = ((NetworkSessionAsynchronousJoin)asyncResult.AsyncDelegate).EndInvoke(result);
                 }
-#endif
             }
             finally
             {
@@ -561,8 +540,6 @@ namespace Microsoft.Xna.Framework.Net
             NetworkSession returnValue = null;
             try
             {
-#if WP8
-#else
                 // Retrieve the delegate.
                 AsyncResult asyncResult = (AsyncResult)result;
 
@@ -574,7 +551,6 @@ namespace Microsoft.Xna.Framework.Net
                 {
                     returnValue = ((NetworkSessionAsynchronousJoinInvited)asyncResult.AsyncDelegate).EndInvoke(result);
                 }
-#endif
             }
             finally
             {
@@ -591,11 +567,7 @@ namespace Microsoft.Xna.Framework.Net
         {
             int hostGamer = -1;
             hostGamer = GetHostingGamerIndex(localGamers);
-#if WP8
-            return Find(sessionType, hostGamer, 4, null);
-#else
             return EndFind(BeginFind(sessionType, hostGamer, 4, searchProperties, null, null));
-#endif
         }
 
         public static AvailableNetworkSessionCollection Find(
@@ -645,12 +617,7 @@ namespace Microsoft.Xna.Framework.Net
 
         public static NetworkSession Join(AvailableNetworkSession availableSession)
         {
-#if WP8
-            return JoinSession(availableSession);
-#else
             return EndJoin(BeginJoin(availableSession, null, null));
-#endif
-
         }
 
         private static NetworkSession JoinSession(AvailableNetworkSession availableSession)

@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Microsoft.Xna.Framework.Net
 {
 
-#if WINDOWS_UAP || WINRT || WP8
+#if WINDOWS_UAP
     [DataContract]
 #else
     [Serializable]

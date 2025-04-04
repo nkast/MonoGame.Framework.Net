@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.Xna.Framework.GamerServices
 {
-#if WINDOWS_UAP || WINRT || WP8
+#if WINDOWS_UAP
     [DataContract]
 #else
     [Serializable]
