@@ -36,14 +36,6 @@ namespace Microsoft.Xna.Framework.GamerServices
 
         private void DoAuthentication()
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-            }
         }
 
         public SignedInGamer()
