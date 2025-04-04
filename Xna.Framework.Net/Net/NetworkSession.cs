@@ -997,17 +997,17 @@ namespace Microsoft.Xna.Framework.Net
         }
 
         /*
-		public int BytesPerSecondReceived { 
-			get {
-				throw new NotImplementedException ();
-			}
-		}
+        public int BytesPerSecondReceived { 
+            get {
+                throw new NotImplementedException ();
+            }
+        }
 
-		public int BytesPerSecondSent { 
-			get {
-				throw new NotImplementedException ();
-			}
-		}
+        public int BytesPerSecondSent { 
+            get {
+                throw new NotImplementedException ();
+            }
+        }
         */
 
         public NetworkGamer Host

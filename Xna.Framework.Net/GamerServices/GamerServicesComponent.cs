@@ -13,14 +13,14 @@ namespace Microsoft.Xna.Framework.GamerServices {
 namespace MonoGame.Xna.Framework.GamerServices {
 #endif
 
-	public class GamerServicesComponent : GameComponent {
-		private static LocalNetworkGamer lng;
+    public class GamerServicesComponent : GameComponent {
+        private static LocalNetworkGamer lng;
 
-		internal static LocalNetworkGamer LocalNetworkGamer { get { return lng; } set { lng = value; } }
+        internal static LocalNetworkGamer LocalNetworkGamer { get { return lng; } set { lng = value; } }
 
-		public GamerServicesComponent(Game game)
-			: base(game)
-		{
+        public GamerServicesComponent(Game game)
+            : base(game)
+        {
 #if WP8
             var assembly = game.GetType().Assembly;
             if (assembly != null)
@@ -32,15 +32,15 @@ namespace MonoGame.Xna.Framework.GamerServices {
                 }
             }
 #endif
-			Guide.Initialise(game);
-			
-		}
+            Guide.Initialise(game);
+            
+        }
 
-		public override void Update (GameTime gameTime)
-		{
+        public override void Update (GameTime gameTime)
+        {
 
-		}
-	}
+        }
+    }
 
     public class MonoGameGamerServicesComponent : GamerServicesComponent
     {

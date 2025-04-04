@@ -32,7 +32,7 @@ namespace Microsoft.Xna.Framework.GamerServices
     public class SignedInGamer : Gamer
     {
         private GKLocalPlayer lp;
-		
+        
         private AchievementCollection gamerAchievements;
         private FriendCollection friendCollection;
 
@@ -42,14 +42,14 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             // Go off authenticate
             AuthenticationDelegate ad = DoAuthentication; 
-			
+            
             return ad.BeginInvoke(callback, ad);
         }
 
         public void EndAuthentication(IAsyncResult result)
         {
             AuthenticationDelegate ad = (AuthenticationDelegate)result.AsyncState; 
-			
+            
             ad.EndInvoke(result);
         }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                     OnSignedOut(new SignedOutEventArgs(this));
                 }
             });
-			
+            
             var result = BeginAuthentication(null, null);	
             EndAuthentication(result);
         }
@@ -149,7 +149,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                 {
                     friendCollection = new FriendCollection();
                 }
-				
+                
                 lp.LoadFriends(delegate (string[] FriendsList, NSError error)
                 {
                     foreach (string Friend in FriendsList)
@@ -158,7 +158,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                     }
                 });
             }
-			
+            
             return friendCollection;
         }
 
@@ -166,10 +166,10 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             if (gamer == null)
                 throw new ArgumentNullException();
-			
+            
             if (gamer.IsDisposed)
                 throw new ObjectDisposedException(gamer.ToString());	
-			
+            
             bool found = false;
             foreach (FriendGamer f in friendCollection)
             {
@@ -179,7 +179,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                 }
             }
             return found;
-						
+                        
         }
 
         delegate AchievementCollection GetAchievementsDelegate();
@@ -188,7 +188,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         {
             // Go off and grab achievements
             GetAchievementsDelegate gad = GetAchievements; 
-			
+            
             return gad.BeginInvoke(callback, gad);
         }
 
@@ -204,9 +204,9 @@ namespace Microsoft.Xna.Framework.GamerServices
         public AchievementCollection EndGetAchievements(IAsyncResult result)
         {
             GetAchievementsDelegate gad = (GetAchievementsDelegate)result.AsyncState; 
-			
+            
             gamerAchievements = gad.EndInvoke(result);
-			
+            
             return gamerAchievements;
         }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                 {
                     gamerAchievements = new AchievementCollection();
                 }
-				
+                
                 GKAchievementDescription.LoadAchievementDescriptions(delegate(GKAchievementDescription[] achievements, NSError error)
                 {
                     if (achievements != null)
@@ -235,7 +235,7 @@ namespace Microsoft.Xna.Framework.GamerServices
                         }
                     }
                 });
-				
+                
                 GKAchievement.LoadAchievements(delegate(GKAchievement[] achievements, NSError error)
                 {
                     if (achievements != null)
@@ -273,14 +273,14 @@ namespace Microsoft.Xna.Framework.GamerServices
         {	
             // Go off and award the achievement
             AwardAchievementDelegate aad = DoAwardAchievement; 
-				
+                
             return aad.BeginInvoke(achievementId, percentageComplete, callback, aad);
         }
 
         public void EndAwardAchievement(IAsyncResult result)
         {
             AwardAchievementDelegate aad = (AwardAchievementDelegate)result.AsyncState; 
-			
+            
             aad.EndInvoke(result);
         }
 
@@ -467,7 +467,7 @@ namespace Microsoft.Xna.Framework.GamerServices
         //            }
         //        }
         #endregion
-		
+        
         protected virtual void OnSignedIn(SignedInEventArgs e)
         {
             Net.EventHelpers.Raise(this, SignedIn, e);
@@ -478,7 +478,7 @@ namespace Microsoft.Xna.Framework.GamerServices
             Net.EventHelpers.Raise(this, SignedOut, e);
         }
 
-		
+        
         #region Events
         public static event EventHandler<SignedInEventArgs> SignedIn;
         public static event EventHandler<SignedOutEventArgs> SignedOut;
@@ -489,7 +489,7 @@ namespace Microsoft.Xna.Framework.GamerServices
     {
         public SignedInEventArgs(SignedInGamer gamer)
         {
-			
+            
         }
     }
 
@@ -497,7 +497,7 @@ namespace Microsoft.Xna.Framework.GamerServices
     {
         public SignedOutEventArgs(SignedInGamer gamer)
         {
-			
+            
         }
     }
 }

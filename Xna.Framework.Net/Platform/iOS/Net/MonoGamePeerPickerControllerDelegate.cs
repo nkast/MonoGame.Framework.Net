@@ -14,71 +14,71 @@ using Microsoft.Xna.Framework.GamerServices;
 namespace Microsoft.Xna.Framework.Net
 {
     [CLSCompliant(false)]
-	public class MonoGamePeerPickerControllerDelegate : GameKit.GKPeerPickerControllerDelegate
-	{
-		private GKSession gkSession;
-		private EventHandler<GKDataReceivedEventArgs> receivedData;
-		
+    public class MonoGamePeerPickerControllerDelegate : GameKit.GKPeerPickerControllerDelegate
+    {
+        private GKSession gkSession;
+        private EventHandler<GKDataReceivedEventArgs> receivedData;
+        
         [CLSCompliant(false)]
-		public MonoGamePeerPickerControllerDelegate( GKSession aSession, EventHandler<GKDataReceivedEventArgs> aReceivedData )
-		{
-			gkSession = aSession;
-			receivedData = aReceivedData;
-		}
-		
+        public MonoGamePeerPickerControllerDelegate( GKSession aSession, EventHandler<GKDataReceivedEventArgs> aReceivedData )
+        {
+            gkSession = aSession;
+            receivedData = aReceivedData;
+        }
+        
         [CLSCompliant(false)]
-		public override void ConnectionTypeSelected(GKPeerPickerController picker, GKPeerPickerConnectionType type)
-		{
+        public override void ConnectionTypeSelected(GKPeerPickerController picker, GKPeerPickerConnectionType type)
+        {
 #if DEBUG			
-			Console.WriteLine( "User Selected a ConnectionType of : " + type);
+            Console.WriteLine( "User Selected a ConnectionType of : " + type);
 #endif
-			if (type == GKPeerPickerConnectionType.Online) 
-			{
+            if (type == GKPeerPickerConnectionType.Online) 
+            {
 
-        		picker.Dismiss();
-				picker.Delegate = null;
+                picker.Dismiss();
+                picker.Delegate = null;
 
-       			// Implement your own internet user interface here.
+                // Implement your own internet user interface here.
 
-    		}
-		}
-		
-		/*public override GKSession GetSession(GKPeerPickerController picker, GKPeerPickerConnectionType forType)
-		{		
-			Console.WriteLine( "GetSession" );
-			
-			return gkSession;
-		}*/
+            }
+        }
+        
+        /*public override GKSession GetSession(GKPeerPickerController picker, GKPeerPickerConnectionType forType)
+        {		
+            Console.WriteLine( "GetSession" );
+            
+            return gkSession;
+        }*/
         [CLSCompliant(false)]
-		public override void PeerConnected(GKPeerPickerController picker, string peerId, GKSession toSession)		
-		{
+        public override void PeerConnected(GKPeerPickerController picker, string peerId, GKSession toSession)		
+        {
 #if DEBUG			
-			Console.WriteLine( "Peer ID " + peerId + " Connected to Session ID : " + toSession.SessionID );
+            Console.WriteLine( "Peer ID " + peerId + " Connected to Session ID : " + toSession.SessionID );
 #endif
-			
-			// Use a retaining property to take ownership of the session.
-    		this.gkSession = toSession;
+            
+            // Use a retaining property to take ownership of the session.
+            this.gkSession = toSession;
 
-			// Assumes our object will also become the session's delegate.
-    		gkSession.Delegate = new MonoGameSessionDelegate();
-			gkSession.ReceiveData += new EventHandler<GKDataReceivedEventArgs>(receivedData);
+            // Assumes our object will also become the session's delegate.
+            gkSession.Delegate = new MonoGameSessionDelegate();
+            gkSession.ReceiveData += new EventHandler<GKDataReceivedEventArgs>(receivedData);
 
-    		picker.Dismiss();
-			
-			// Remove the picker.
-			picker.Delegate = null;
+            picker.Dismiss();
+            
+            // Remove the picker.
+            picker.Delegate = null;
 
-			// Start your game.
-			
-		}
-		
+            // Start your game.
+            
+        }
+        
         [CLSCompliant(false)]
-		public override void ControllerCancelled(GKPeerPickerController picker)
-		{
+        public override void ControllerCancelled(GKPeerPickerController picker)
+        {
 #if DEBUG
-			Console.WriteLine( "ControllerCancelled");
+            Console.WriteLine( "ControllerCancelled");
 #endif
-			picker.Delegate = null;
-		}
-	}
+            picker.Delegate = null;
+        }
+    }
 }

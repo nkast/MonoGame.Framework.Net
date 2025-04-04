@@ -5,15 +5,15 @@
 using System;
 
 namespace Microsoft.Xna.Framework.GamerServices {
-	public enum NotificationPosition {
-		TopLeft,
-		TopCenter,
-		TopRight,
-		CenterLeft,
-		Center,
-		CenterRight,
-		BottomLeft,
-		BottomCenter,
-		BottomRight
-	}
+    public enum NotificationPosition {
+        TopLeft,
+        TopCenter,
+        TopRight,
+        CenterLeft,
+        Center,
+        CenterRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight
+    }
 }

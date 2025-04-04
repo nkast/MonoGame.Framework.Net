@@ -377,7 +377,7 @@ namespace Microsoft.Xna.Framework.GamerServices
             {
 #pragma warning disable 618
                 // Disable DismissModalViewControllerAnimated warning, still need to support iOS 5 and older
-				viewController.DismissModalViewController(true);
+                viewController.DismissModalViewController(true);
 #pragma warning restore 618
             }
             else
