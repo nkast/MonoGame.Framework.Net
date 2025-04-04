@@ -6,13 +6,13 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFrameworks>net45</TargetFrameworks>
     <ProjectGuid>{6D6009F4-0AFB-4806-89D7-7945F20270F5}</ProjectGuid>
-    <RootNamespace>Microsoft.Xna.Framework</RootNamespace>
-    <AssemblyName>MonoGame.Framework.Net</AssemblyName>
+    <RootNamespace>Microsoft.Xna.Framework.Net</RootNamespace>
+    <AssemblyName>Xna.Framework.Net</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1591,0436</NoWarn>
     <OutputPath>bin\WindowsGL\$(Platform)\$(Configuration)</OutputPath>
     <IntermediateOutputPath>obj\WindowsGL\$(Platform)\$(Configuration)</IntermediateOutputPath>
-    <DocumentationFile>bin\WindowsGL\$(Platform)\$(Configuration)\MonoGame.Framework.Net.xml</DocumentationFile>
+    <DocumentationFile>bin\WindowsGL\$(Platform)\$(Configuration)\Xna.Framework.Net.xml</DocumentationFile>
     <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
 

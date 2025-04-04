@@ -6,13 +6,13 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFramework>net8.0-ios</TargetFramework>
     <ProjectGuid>{D4838656-8545-4DC5-8822-D4AD313E17AC}</ProjectGuid>
-    <RootNamespace>Microsoft.Xna.Framework</RootNamespace>
-    <AssemblyName>MonoGame.Framework.Net</AssemblyName>
+    <RootNamespace>Microsoft.Xna.Framework.Net</RootNamespace>
+    <AssemblyName>Xna.Framework.Net</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1591,0436</NoWarn>
     <OutputPath>bin\iOS\$(Platform)\$(Configuration)</OutputPath>
     <IntermediateOutputPath>obj\iOS\$(Platform)\$(Configuration)</IntermediateOutputPath>
-    <DocumentationFile>bin\iOS\$(Platform)\$(Configuration)\MonoGame.Framework.Net.xml</DocumentationFile>
+    <DocumentationFile>bin\iOS\$(Platform)\$(Configuration)\Xna.Framework.Net.xml</DocumentationFile>
     <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
 

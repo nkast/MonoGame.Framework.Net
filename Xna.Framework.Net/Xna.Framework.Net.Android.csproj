@@ -6,13 +6,13 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFramework>net8.0-android</TargetFramework>
     <ProjectGuid>{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}</ProjectGuid>
-    <RootNamespace>Microsoft.Xna.Framework</RootNamespace>
-    <AssemblyName>MonoGame.Framework.Net</AssemblyName>
+    <RootNamespace>Microsoft.Xna.Framework.Net</RootNamespace>
+    <AssemblyName>Xna.Framework.Net</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1591,0436</NoWarn>
     <OutputPath>bin\Android\$(Platform)\$(Configuration)</OutputPath>
     <IntermediateOutputPath>obj\Android\$(Platform)\$(Configuration)</IntermediateOutputPath>
-    <DocumentationFile>bin\Android\$(Platform)\$(Configuration)\MonoGame.Framework.Net.xml</DocumentationFile>
+    <DocumentationFile>bin\Android\$(Platform)\$(Configuration)\Xna.Framework.Net.xml</DocumentationFile>
     <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
 

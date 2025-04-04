@@ -9,7 +9,7 @@ using System.Resources;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MonoGame Team")]
-[assembly: AssemblyProduct("MonoGame.Framework")]
+[assembly: AssemblyProduct("Xna.Framework.Net")]
 [assembly: AssemblyCopyright("Copyright © 2009-2019 MonoGame Team")]
 [assembly: AssemblyTrademark("MonoGame® is a registered trademark of the MonoGame Team")]
 [assembly: AssemblyCulture("")]
@@ -39,5 +39,5 @@ using System.Resources;
 
 // Version information for the assembly which is automatically
 // set by our automated build process.
-[assembly: AssemblyVersion("3.7.1.0")]
-[assembly: AssemblyFileVersion("3.7.1.0")]
+[assembly: AssemblyVersion("4.0.9001.0")]
+[assembly: AssemblyFileVersion("4.0.9001.0")]

@@ -6,13 +6,13 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFrameworks>net45</TargetFrameworks>
     <ProjectGuid>{1B738549-0449-4504-B978-7BFC347E3F3C}</ProjectGuid>
-    <RootNamespace>Microsoft.Xna.Framework</RootNamespace>
-    <AssemblyName>MonoGame.Framework.Net</AssemblyName>
+    <RootNamespace>Microsoft.Xna.Framework.Net</RootNamespace>
+    <AssemblyName>Xna.Framework.Net</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1591,0436</NoWarn>
     <OutputPath>bin\Linux\$(Platform)\$(Configuration)</OutputPath>
     <IntermediateOutputPath>obj\Linux\$(Platform)\$(Configuration)</IntermediateOutputPath>
-    <DocumentationFile>bin\Linux\$(Platform)\$(Configuration)\MonoGame.Framework.Net.xml</DocumentationFile>
+    <DocumentationFile>bin\Linux\$(Platform)\$(Configuration)\Xna.Framework.Net.xml</DocumentationFile>
     <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
 
