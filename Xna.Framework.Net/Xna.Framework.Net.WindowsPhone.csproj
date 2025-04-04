@@ -115,7 +115,6 @@
     <Compile Include="GamerServices\LeaderboardWriter.cs" />
     <Compile Include="GamerServices\MessageBoxIcon.cs" />
     <Compile Include="GamerServices\PropertyDictionary.cs" />
-    <Compile Include="Net\Utilities\DebugHelpers.cs" />
     <Compile Include="Platform\Windows\GamerServices\Guide.cs" />
   </ItemGroup>
   <ItemGroup />

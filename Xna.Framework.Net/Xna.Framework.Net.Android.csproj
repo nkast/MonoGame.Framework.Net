@@ -88,7 +88,6 @@
     <Compile Include="GamerServices\SignedInGamerCollection.cs" />
     <Compile Include="GamerServices\GuideAlreadyVisibleException.cs" />
     <Compile Include="GamerServices\GamerServicesComponent.cs" />
-    <Compile Include="Net\Utilities\DebugHelpers.cs" />
     <Compile Include="Net\AvailableNetworkSessionCollection.cs" />
     <Compile Include="Net\AvailableNetworkSession.cs" />
     <Compile Include="Net\CommandEvent.cs" />

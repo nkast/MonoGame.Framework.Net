@@ -83,7 +83,7 @@ namespace Microsoft.Xna.Framework.Net
 
         void HandleSessionStateChanged(object sender, EventArgs e)
         {
-            DebugHelpers.Log("session state change");
+            System.Diagnostics.Debug.WriteLine("session state change");
             SendSessionStateChange();
 
             if (session.SessionState == NetworkSessionState.Ended)
@@ -184,7 +184,7 @@ namespace Microsoft.Xna.Framework.Net
                         case NetIncomingMessageType.UnconnectedData:
                             break;
                         case NetIncomingMessageType.NatIntroductionSuccess:
-                            DebugHelpers.Log("NAT punch through OK " + msg.SenderEndPoint);
+                            System.Diagnostics.Debug.WriteLine("NAT punch through OK " + msg.SenderEndPoint);
                             peer.Connect(msg.SenderEndPoint);
                             break;
                         case NetIncomingMessageType.DiscoveryRequest:
@@ -217,13 +217,13 @@ namespace Microsoft.Xna.Framework.Net
                             //
                             // Just print diagnostic messages to console
                             //
-                            DebugHelpers.Log(msg.ReadString());
+                            System.Diagnostics.Debug.WriteLine(msg.ReadString());
                             break;
                         case NetIncomingMessageType.StatusChanged:
                             NetConnectionStatus status = (NetConnectionStatus)msg.ReadByte();
                             if (status == NetConnectionStatus.Disconnected)
                             {
-                                DebugHelpers.Log(NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier) + " disconnected! from " + msg.SenderEndPoint);
+                                System.Diagnostics.Debug.WriteLine(NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier) + " disconnected! from " + msg.SenderEndPoint);
                                 CommandGamerLeft cgj = new CommandGamerLeft(msg.SenderConnection.RemoteUniqueIdentifier);
                                 CommandEvent cmde = new CommandEvent(cgj);
                                 session.commandQueue.Enqueue(cmde);
@@ -235,13 +235,13 @@ namespace Microsoft.Xna.Framework.Net
                                 //
                                 if (!pendingGamers.ContainsKey(msg.SenderConnection.RemoteUniqueIdentifier))
                                 {
-                                    DebugHelpers.Log(NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier) + " connected! from " + msg.SenderEndPoint);
+                                    System.Diagnostics.Debug.WriteLine(NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier) + " connected! from " + msg.SenderEndPoint);
                                     pendingGamers.Add(msg.SenderConnection.RemoteUniqueIdentifier, msg.SenderConnection);
                                     SendProfileRequest(msg.SenderConnection);
                                 }
                                 else
                                 {
-                                    DebugHelpers.Log("Already have a connection for that user, this is probably due to both NAT intro requests working");
+                                    System.Diagnostics.Debug.WriteLine("Already have a connection for that user, this is probably due to both NAT intro requests working");
                                 }
                             }
 
@@ -270,19 +270,19 @@ namespace Microsoft.Xna.Framework.Net
                                         if (myLocalEndPoint.ToString() != endPoint.ToString() && !AlreadyConnected(endPoint))
                                         {
 
-                                            DebugHelpers.Log("Received Introduction for: " + introductionAddress +
+                                            System.Diagnostics.Debug.WriteLine("Received Introduction for: " + introductionAddress +
                                             " and I am: " + myLocalEndPoint + " from: " + msg.SenderEndPoint);
                                             peer.Connect(endPoint);
                                         }
                                     }
                                     catch (Exception exc)
                                     {
-                                        DebugHelpers.Log("Error parsing Introduction: " + introductionAddress + " : " + exc.Message);
+                                        System.Diagnostics.Debug.WriteLine("Error parsing Introduction: " + introductionAddress + " : " + exc.Message);
                                     }
 
                                     break;
                                 case NetworkMessageType.GamerProfile:
-                                    DebugHelpers.Log("Profile recieved from: " + NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier));
+                                    System.Diagnostics.Debug.WriteLine("Profile recieved from: " + NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier));
                                     if (pendingGamers.ContainsKey(msg.SenderConnection.RemoteUniqueIdentifier))
                                     {
                                         pendingGamers.Remove(msg.SenderConnection.RemoteUniqueIdentifier);
@@ -300,17 +300,17 @@ namespace Microsoft.Xna.Framework.Net
                                     }
                                     else
                                     {
-                                        DebugHelpers.Log("We received a profile for an existing gamer.  Need to update it.");
+                                        System.Diagnostics.Debug.WriteLine("We received a profile for an existing gamer.  Need to update it.");
                                     }
                                     break;
                                 case NetworkMessageType.RequestGamerProfile:
-                                    DebugHelpers.Log("Profile Request recieved from: " + msg.SenderEndPoint);
+                                    System.Diagnostics.Debug.WriteLine("Profile Request recieved from: " + msg.SenderEndPoint);
                                     SendProfile(msg.SenderConnection);
                                     break;
                                 case NetworkMessageType.GamerStateChange:
                                     GamerStates gamerstate = (GamerStates)msg.ReadInt32();
                                     gamerstate &= ~GamerStates.Local;
-                                    DebugHelpers.Log("State Change from: " + msg.SenderEndPoint + " new State: " + gamerstate);
+                                    System.Diagnostics.Debug.WriteLine("State Change from: " + msg.SenderEndPoint + " new State: " + gamerstate);
                                     foreach (var gamer in session.RemoteGamers)
                                     {
                                         if (gamer.RemoteUniqueIdentifier == msg.SenderConnection.RemoteUniqueIdentifier)
@@ -324,7 +324,7 @@ namespace Microsoft.Xna.Framework.Net
                                     {
                                         if (gamer.RemoteUniqueIdentifier == msg.SenderConnection.RemoteUniqueIdentifier)
                                         {
-                                            DebugHelpers.Log("Session State change from: " + NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier) +
+                                            System.Diagnostics.Debug.WriteLine("Session State change from: " + NetUtility.ToHexString(msg.SenderConnection.RemoteUniqueIdentifier) +
                                                 " session is now: " + sessionState);
                                             if (gamer.IsHost && sessionState == NetworkSessionState.Playing)
                                             {
@@ -347,7 +347,7 @@ namespace Microsoft.Xna.Framework.Net
 
                 if (worker.CancellationPending)
                 {
-                    DebugHelpers.Log("worker CancellationPending");
+                    System.Diagnostics.Debug.WriteLine("worker CancellationPending");
                     e.Cancel = true;
                     done = true;
                 }
@@ -371,13 +371,13 @@ namespace Microsoft.Xna.Framework.Net
         {
             if ((e.Cancelled == true))
             {
-                DebugHelpers.Log("Canceled");
+                System.Diagnostics.Debug.WriteLine("Canceled");
             }
             else if (!(e.Error == null))
             {
-                DebugHelpers.Log("Error: " + e.Error.Message);
+                System.Diagnostics.Debug.WriteLine("Error: " + e.Error.Message);
             }
-            DebugHelpers.Log("worker Completed");
+            System.Diagnostics.Debug.WriteLine("worker Completed");
 
             if (online && this.availableSession == null)
             {
@@ -401,7 +401,7 @@ namespace Microsoft.Xna.Framework.Net
             om.Write(session.PrivateGamerSlots);
             om.Write(session.MaxGamers);
             om.Write((int)session.LocalGamers[0].State);
-            DebugHelpers.Log("Sent profile to: " + NetUtility.ToHexString(player.RemoteUniqueIdentifier));
+            System.Diagnostics.Debug.WriteLine("Sent profile to: " + NetUtility.ToHexString(player.RemoteUniqueIdentifier));
             peer.SendMessage(om, player, NetDeliveryMethod.ReliableOrdered);
         }
 
@@ -409,7 +409,7 @@ namespace Microsoft.Xna.Framework.Net
         {
             NetOutgoingMessage om = peer.CreateMessage();
             om.Write((byte)NetworkMessageType.RequestGamerProfile);
-            DebugHelpers.Log("Sent profile request to: " + NetUtility.ToHexString(player.RemoteUniqueIdentifier));
+            System.Diagnostics.Debug.WriteLine("Sent profile request to: " + NetUtility.ToHexString(player.RemoteUniqueIdentifier));
             peer.SendMessage(om, player, NetDeliveryMethod.ReliableOrdered);
         }
 
@@ -433,7 +433,7 @@ namespace Microsoft.Xna.Framework.Net
 
             foreach (NetConnection player in peer.Connections)
             {
-                DebugHelpers.Log("Introduction sent to: " + player.RemoteEndPoint);
+                System.Diagnostics.Debug.WriteLine("Introduction sent to: " + player.RemoteEndPoint);
                 NetOutgoingMessage om = peer.CreateMessage();
                 om.Write((byte)NetworkMessageType.Introduction);
                 om.Write(playerConnection.RemoteEndPoint.ToString());
@@ -444,7 +444,7 @@ namespace Microsoft.Xna.Framework.Net
 
         internal void SendGamerStateChange(NetworkGamer gamer)
         {
-            DebugHelpers.Log("SendGamerStateChange " + gamer.RemoteUniqueIdentifier);
+            System.Diagnostics.Debug.WriteLine("SendGamerStateChange " + gamer.RemoteUniqueIdentifier);
             NetOutgoingMessage om = peer.CreateMessage();
             om.Write((byte)NetworkMessageType.GamerStateChange);
             om.Write((int)gamer.State);
@@ -454,7 +454,7 @@ namespace Microsoft.Xna.Framework.Net
 
         internal void SendSessionStateChange()
         {
-            DebugHelpers.Log("Send Session State Change");
+            System.Diagnostics.Debug.WriteLine("Send Session State Change");
             NetOutgoingMessage om = peer.CreateMessage();
             om.Write((byte)NetworkMessageType.SessionStateChange);
             om.Write((int)session.SessionState);
