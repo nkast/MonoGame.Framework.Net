@@ -78,11 +78,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\Monogame.Framework\Android\MonoGame.Framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+	  <PackageReference Include="nkast.Xna.Framework" Version="4.0.9001" />
+	  <PackageReference Include="nkast.Xna.Framework.Game" Version="4.0.9001" />
+	  <PackageReference Include="nkast.Xna.Framework.Graphics" Version="4.0.9001" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj" />
