@@ -5,8 +5,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 using System.Threading;
+
+#if NET40_OR_GREATER
+using System.Runtime.Remoting.Messaging;
+#endif
 
 using Microsoft.Xna.Framework.GamerServices;
 
@@ -439,6 +442,7 @@ namespace Microsoft.Xna.Framework.Net
 
         public static NetworkSession EndCreate(IAsyncResult result)
         {
+#if NET40_OR_GREATER
             NetworkSession returnValue = null;
             try
             {
@@ -462,10 +466,14 @@ namespace Microsoft.Xna.Framework.Net
             }
 
             return returnValue;
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         public static AvailableNetworkSessionCollection EndFind(IAsyncResult result)
         {
+#if NET40_OR_GREATER
             AvailableNetworkSessionCollection returnValue = null;
             List<AvailableNetworkSession> networkSessions = new List<AvailableNetworkSession>();
 
@@ -495,6 +503,9 @@ namespace Microsoft.Xna.Framework.Net
             }
             returnValue = new AvailableNetworkSessionCollection(networkSessions);
             return returnValue;
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         public void EndGame()
@@ -512,6 +523,7 @@ namespace Microsoft.Xna.Framework.Net
 
         public static NetworkSession EndJoin(IAsyncResult result)
         {
+#if NET40_OR_GREATER
             NetworkSession returnValue = null;
             try
             {
@@ -533,10 +545,14 @@ namespace Microsoft.Xna.Framework.Net
                 result.AsyncWaitHandle.Close();
             }
             return returnValue;
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         public static NetworkSession EndJoinInvited(IAsyncResult result)
         {
+#if NET40_OR_GREATER
             NetworkSession returnValue = null;
             try
             {
@@ -558,6 +574,9 @@ namespace Microsoft.Xna.Framework.Net
                 result.AsyncWaitHandle.Close();
             }
             return returnValue;
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         public static AvailableNetworkSessionCollection Find(

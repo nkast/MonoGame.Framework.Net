@@ -14,8 +14,6 @@ using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.System;
 using Microsoft.Xna.Framework.Input;
-#else
-using System.Runtime.Remoting.Messaging;
 #endif
 
 #if !WINDOWS_UAP && !WINDOWS
